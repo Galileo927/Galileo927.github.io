@@ -36,7 +36,7 @@
 &lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;选择对应操作系统（由于清华源内容很多，找的时候一定要看清）：
-&lt;img src=&#34;https://Galileo927.github.io/images/python/anaconda%e4%b8%8b%e8%bd%bd.jpg&#34;
+&lt;img src=&#34;https://Galileo927.github.io/images/python/anaconda%e4%b8%8b%e8%bd%bd.png&#34;
 	
 	
 	
@@ -71,7 +71,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 应显示类似：conda 23.7.4&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Galileo927.github.io/images/python/anaconda%e4%b8%8b%e8%bd%bd%e6%88%90%e5%8a%9f.jpg&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Galileo927.github.io/images/python/anaconda%e4%b8%8b%e8%bd%bd%e6%88%90%e5%8a%9f.png&#34;
 	
 	
 	
@@ -136,7 +136,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;3.像这样你就创建成功了
-&lt;img src=&#34;https://Galileo927.github.io/images/python/%e7%8e%af%e5%a2%83.jpg&#34;
+&lt;img src=&#34;https://Galileo927.github.io/images/python/%e7%8e%af%e5%a2%83.png&#34;
 	
 	
 	
@@ -157,7 +157,7 @@
 &lt;p&gt;&lt;strong&gt;选择 Conda 环境&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;直接打开右下角的地方，如图，选择添加新的解释器
-&lt;img src=&#34;https://Galileo927.github.io/images/python/%e9%85%8d%e7%bd%ae.jpg&#34;
+&lt;img src=&#34;https://Galileo927.github.io/images/python/%e9%85%8d%e7%bd%ae.png&#34;
 	
 	
 	
@@ -169,7 +169,7 @@
 &gt;&lt;/li&gt;
 &lt;li&gt;选择现有，类型选择conda类型，conda路径在anaconda的下载地址中找类似于我这个
 E:\anaconda\Scripts\conda.exe（我安装到了E盘）
-&lt;img src=&#34;https://Galileo927.github.io/images/python/%e5%8a%a0%e8%bd%bd%e7%8e%af%e5%a2%83.jpg&#34;
+&lt;img src=&#34;https://Galileo927.github.io/images/python/%e5%8a%a0%e8%bd%bd%e7%8e%af%e5%a2%83.png&#34;
 	
 	
 	
