@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>Example Person</copyright>
         <lastBuildDate>Sat, 16 Aug 2025 13:14:47 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title></title>
-        <link>https://Galileo927.github.io/p/</link>
+        <title>Anaconda及pycharm的安装</title>
+        <link>https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/</link>
         <pubDate>Sat, 16 Aug 2025 13:14:47 +0800</pubDate>
         
-        <guid>https://Galileo927.github.io/p/</guid>
+        <guid>https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
         <description>&lt;h1 id=&#34;python开发环境搭建指南anaconda与pycharm安装教程&#34;&gt;Python开发环境搭建指南：Anaconda与PyCharm安装教程
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。&lt;/p&gt;
