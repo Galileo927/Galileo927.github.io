@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Fri, 15 Aug 2025 21:33:21 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 16 Aug 2025 13:14:47 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Python</title>
+        <link>https://Galileo927.github.io/tags/python/</link>
+        <pubDate>Sat, 16 Aug 2025 13:14:47 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Cpp</title>
         <link>https://Galileo927.github.io/tags/cpp/</link>
         <pubDate>Fri, 15 Aug 2025 21:33:21 +0800</pubDate>
