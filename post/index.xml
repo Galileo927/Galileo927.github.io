@@ -7,7 +7,80 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Sat, 16 Aug 2025 13:14:47 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 01 Oct 2025 22:30:41 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows与ubuntu双系统的安装</title>
+        <link>https://Galileo927.github.io/p/windows%E4%B8%8Eubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+        <pubDate>Wed, 01 Oct 2025 22:30:41 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/p/windows%E4%B8%8Eubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+        <description>&lt;h1 id=&#34;windows下ubuntu双系统的安装&#34;&gt;Windows下ubuntu双系统的安装
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;我们IST实验室选择了Ubuntu作为视觉工作的系统，通常使用22.04版本。详细安装流程见下文。&lt;/p&gt;
+&lt;p&gt;如果你想生动地了解如何下载，可以去这个网址 &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1554y1n7zv/?share_source=copy_web&amp;amp;vd_source=48d5cb51bbb656914376a7aa87b5e244&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;B站教学&lt;/a&gt; 看视频学习。&lt;/p&gt;
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;一台已安装 Windows 的电脑&lt;/li&gt;
+&lt;li&gt;至少 100GB 的可用磁盘空间&lt;/li&gt;
+&lt;li&gt;一个 8GB 及以上的 U盘（用于制作 Ubuntu 启动盘）&lt;/li&gt;
+&lt;li&gt;Ubuntu 镜像文件（可从官网 &lt;a class=&#34;link&#34; href=&#34;https://ubuntu.com/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ubuntu.com/download&lt;/a&gt; 获取）&lt;/li&gt;
+&lt;li&gt;备份重要数据，防止操作失误导致数据丢失&lt;/li&gt;
+&lt;li&gt;有问题时不用慌，先去看一下后文的常见问题有没有解决方案，也可以询问AI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;windows-分区调整&#34;&gt;Windows 分区调整
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;打开“磁盘管理”工具（Win+X → 磁盘管理）。&lt;/li&gt;
+&lt;li&gt;右键 C 盘或其他分区，选择“压缩卷”，为 Ubuntu 预留空间（建议 20GB 以上）。&lt;/li&gt;
+&lt;li&gt;压缩后会出现“未分配空间”，无需新建分区，安装时由 Ubuntu 自动分配。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;制作-ubuntu-启动盘&#34;&gt;制作 Ubuntu 启动盘
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;下载并安装 Rufus 工具（&lt;a class=&#34;link&#34; href=&#34;https://rufus.ie/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网地址&lt;/a&gt;）。&lt;/li&gt;
+&lt;li&gt;插入 U盘，打开 Rufus，选择下载好的 Ubuntu 镜像。&lt;/li&gt;
+&lt;li&gt;保持默认设置，点击“开始”制作启动盘。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;biosuefi-设置&#34;&gt;BIOS/UEFI 设置
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;重启电脑，进入 BIOS 设置（根据不同电脑品牌自行查询）。&lt;/li&gt;
+&lt;li&gt;将 U盘设置为第一启动项。&lt;/li&gt;
+&lt;li&gt;若为 UEFI 模式，建议关闭安全启动（Secure Boot）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;安装-ubuntu&#34;&gt;安装 Ubuntu
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;插入启动盘，重启电脑进入 Ubuntu 安装界面。&lt;/li&gt;
+&lt;li&gt;选择“安装 Ubuntu”。&lt;/li&gt;
+&lt;li&gt;安装类型选择“与 Windows 共存”或“其他选项”，手动选择刚才压缩出的未分配空间。（个人推荐最好选择“与 Windows 共存”，操作简单）&lt;/li&gt;
+&lt;li&gt;设置分区（推荐：/ 根分区 20GB+，swap 2GB+，/home 可选）。&lt;/li&gt;
+&lt;li&gt;按提示完成安装，期间设置用户名、密码等。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;引导修复与启动选择&#34;&gt;引导修复与启动选择
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;安装完成后，重启电脑会进入 GRUB 引导界面，可选择 Windows 或 Ubuntu。&lt;/li&gt;
+&lt;li&gt;若未出现 GRUB，可用启动盘进入 Ubuntu，安装并运行 boot-repair 工具修复引导。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见问题与解决&#34;&gt;常见问题与解决
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分区丢失/数据丢失&lt;/strong&gt;：安装前务必备份重要数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;无法进入 Ubuntu/Windows&lt;/strong&gt;：检查 BIOS 启动项及分区设置，必要时使用 boot-repair。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GRUB 未显示&lt;/strong&gt;：尝试修复引导或检查分区格式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;英伟达显卡安装黑屏或安全模式问题&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;如果在安装 Ubuntu 时出现黑屏或只能进入安全模式（可视范围很小），且 Windows 进入了独显模式，有两种解决方案：
+&lt;ol&gt;
+&lt;li&gt;进入 Windows，关闭独显模式，重新进入安装界面。安装完成后，进入 Ubuntu，打开“附加驱动”，安装英伟达驱动，优先选择带有“test”或“专用”字样的版本。&lt;/li&gt;
+&lt;li&gt;在 GRUB 引导界面时，将光标移动到 Ubuntu 安装选项，不要回车。按“E”进入编辑模式，使用方向键向下滚动，找到以 linux 开头的一行（结尾通常是 $vt_handoff 或 quiet splash），在 splash 后面加上 nomodeset，然后按 Ctrl+X 启动。进入系统后，按方案1安装驱动。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结语&#34;&gt;结语
+&lt;/h2&gt;&lt;p&gt;通过以上步骤，你可以在一台电脑上顺利安装并使用 Windows 与 Ubuntu 双系统。遇到问题时，可以发到群里让你亲爱的学长帮助你，如果学长也无法帮助你，可以查阅官方文档或相关社区获取帮助，如果还是无法解决，去电脑店刷机。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Anaconda及pycharm的安装</title>
         <link>https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/</link>
         <pubDate>Sat, 16 Aug 2025 13:14:47 +0800</pubDate>
@@ -207,79 +280,6 @@ E:\anaconda\Scripts\conda.exe（我安装到了E盘）
         <description>&lt;h2 id=&#34;hello-blog&#34;&gt;Hello Blog
 &lt;/h2&gt;&lt;p&gt;这是我的第一篇blog，感谢b站的大佬以及背靠微软的GitHub，让我一个学生党也能免费部署。
 之后会发布一些我自己的学习总结以及经历，具体学习的方向应该是数学、cpp、python、计算机视觉、数据分析以及深度学习的内容。有点偏向技术文档的日记。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title></title>
-        <link>https://Galileo927.github.io/p/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://Galileo927.github.io/p/</guid>
-        <description>&lt;h1 id=&#34;windows下ubuntu双系统的安装&#34;&gt;Windows下ubuntu双系统的安装
-&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
-&lt;/h2&gt;&lt;p&gt;我们IST实验室选择了Ubuntu作为视觉工作的系统，通常使用22.04版本。详细安装流程见下文。&lt;/p&gt;
-&lt;p&gt;如果你想生动地了解如何下载，可以去这个网址 &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1554y1n7zv/?share_source=copy_web&amp;amp;vd_source=48d5cb51bbb656914376a7aa87b5e244&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;B站教学&lt;/a&gt; 看视频学习。&lt;/p&gt;
-&lt;h2 id=&#34;准备工作&#34;&gt;准备工作
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;一台已安装 Windows 的电脑&lt;/li&gt;
-&lt;li&gt;至少 100GB 的可用磁盘空间&lt;/li&gt;
-&lt;li&gt;一个 8GB 及以上的 U盘（用于制作 Ubuntu 启动盘）&lt;/li&gt;
-&lt;li&gt;Ubuntu 镜像文件（可从官网 &lt;a class=&#34;link&#34; href=&#34;https://ubuntu.com/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://ubuntu.com/download&lt;/a&gt; 获取）&lt;/li&gt;
-&lt;li&gt;备份重要数据，防止操作失误导致数据丢失&lt;/li&gt;
-&lt;li&gt;有问题时不用慌，先去看一下后文的常见问题有没有解决方案，也可以询问AI&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;windows-分区调整&#34;&gt;Windows 分区调整
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;打开“磁盘管理”工具（Win+X → 磁盘管理）。&lt;/li&gt;
-&lt;li&gt;右键 C 盘或其他分区，选择“压缩卷”，为 Ubuntu 预留空间（建议 20GB 以上）。&lt;/li&gt;
-&lt;li&gt;压缩后会出现“未分配空间”，无需新建分区，安装时由 Ubuntu 自动分配。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;制作-ubuntu-启动盘&#34;&gt;制作 Ubuntu 启动盘
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;下载并安装 Rufus 工具（&lt;a class=&#34;link&#34; href=&#34;https://rufus.ie/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官网地址&lt;/a&gt;）。&lt;/li&gt;
-&lt;li&gt;插入 U盘，打开 Rufus，选择下载好的 Ubuntu 镜像。&lt;/li&gt;
-&lt;li&gt;保持默认设置，点击“开始”制作启动盘。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;biosuefi-设置&#34;&gt;BIOS/UEFI 设置
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;重启电脑，进入 BIOS 设置（根据不同电脑品牌自行查询）。&lt;/li&gt;
-&lt;li&gt;将 U盘设置为第一启动项。&lt;/li&gt;
-&lt;li&gt;若为 UEFI 模式，建议关闭安全启动（Secure Boot）。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;安装-ubuntu&#34;&gt;安装 Ubuntu
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;插入启动盘，重启电脑进入 Ubuntu 安装界面。&lt;/li&gt;
-&lt;li&gt;选择“安装 Ubuntu”。&lt;/li&gt;
-&lt;li&gt;安装类型选择“与 Windows 共存”或“其他选项”，手动选择刚才压缩出的未分配空间。（个人推荐最好选择“与 Windows 共存”，操作简单）&lt;/li&gt;
-&lt;li&gt;设置分区（推荐：/ 根分区 20GB+，swap 2GB+，/home 可选）。&lt;/li&gt;
-&lt;li&gt;按提示完成安装，期间设置用户名、密码等。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;引导修复与启动选择&#34;&gt;引导修复与启动选择
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;安装完成后，重启电脑会进入 GRUB 引导界面，可选择 Windows 或 Ubuntu。&lt;/li&gt;
-&lt;li&gt;若未出现 GRUB，可用启动盘进入 Ubuntu，安装并运行 boot-repair 工具修复引导。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;常见问题与解决&#34;&gt;常见问题与解决
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;分区丢失/数据丢失&lt;/strong&gt;：安装前务必备份重要数据。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;无法进入 Ubuntu/Windows&lt;/strong&gt;：检查 BIOS 启动项及分区设置，必要时使用 boot-repair。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;GRUB 未显示&lt;/strong&gt;：尝试修复引导或检查分区格式。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;英伟达显卡安装黑屏或安全模式问题&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;如果在安装 Ubuntu 时出现黑屏或只能进入安全模式（可视范围很小），且 Windows 进入了独显模式，有两种解决方案：
-&lt;ol&gt;
-&lt;li&gt;进入 Windows，关闭独显模式，重新进入安装界面。安装完成后，进入 Ubuntu，打开“附加驱动”，安装英伟达驱动，优先选择带有“test”或“专用”字样的版本。&lt;/li&gt;
-&lt;li&gt;在 GRUB 引导界面时，将光标移动到 Ubuntu 安装选项，不要回车。按“E”进入编辑模式，使用方向键向下滚动，找到以 linux 开头的一行（结尾通常是 $vt_handoff 或 quiet splash），在 splash 后面加上 nomodeset，然后按 Ctrl+X 启动。进入系统后，按方案1安装驱动。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;结语&#34;&gt;结语
-&lt;/h2&gt;&lt;p&gt;通过以上步骤，你可以在一台电脑上顺利安装并使用 Windows 与 Ubuntu 双系统。遇到问题时，可以发到群里让你亲爱的学长帮助你，如果学长也无法帮助你，可以查阅官方文档或相关社区获取帮助，如果还是无法解决，去电脑店刷机。&lt;/p&gt;
 </description>
         </item>
         
