@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Python开发环境搭建指南：Anaconda与PyCharm安装教程 前言 本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。\n">
-<title>Anaconda及pycharm的安装</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
+<title>IST实验室第一次考核的解决方案</title>
 
-<link rel='canonical' href='https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/'>
+<link rel='canonical' href='https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Anaconda及pycharm的安装">
-<meta property='og:description' content="Python开发环境搭建指南：Anaconda与PyCharm安装教程 前言 本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。\n">
-<meta property='og:url' content='https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/'>
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="IST实验室第一次考核的解决方案">
+<meta property='og:description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/'>
 <meta property='og:site_name' content='Galileo Y'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2025-08-16T13:14:47&#43;08:00'/><meta property='article:modified_time' content='2025-08-16T13:14:47&#43;08:00'/>
-<meta name="twitter:title" content="Anaconda及pycharm的安装">
-<meta name="twitter:description" content="Python开发环境搭建指南：Anaconda与PyCharm安装教程 前言 本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-14T16:57:30&#43;08:00'/><meta property='article:modified_time' content='2025-10-14T16:57:30&#43;08:00'/>
+<meta name="twitter:title" content="IST实验室第一次考核的解决方案">
+<meta name="twitter:description" content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -261,33 +261,10 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#前言">前言</a></li>
-    <li><a href="#一anaconda安装指南">一、Anaconda安装指南</a>
-      <ol>
-        <li><a href="#1-anaconda是什么">1. Anaconda是什么？</a></li>
-        <li><a href="#2-下载安装包">2. 下载安装包</a>
-          <ol>
-            <li><a href="#21-官方渠道不推荐新手使用">2.1 官方渠道（不推荐新手使用）</a></li>
-            <li><a href="#22-国内镜像推荐">2.2 国内镜像（推荐）</a></li>
-          </ol>
-        </li>
-        <li><a href="#3-详细安装步骤windows示例">3. 详细安装步骤（Windows示例）</a></li>
-        <li><a href="#4-验证安装">4. 验证安装</a></li>
-      </ol>
-    </li>
-    <li><a href="#二pycharm安装指南">二、pycharm安装指南</a>
-      <ol>
-        <li><a href="#1-pycharm-是什么">1. PyCharm 是什么？</a></li>
-        <li><a href="#2-下载安装包-1">2. 下载安装包</a>
-          <ol>
-            <li><a href="#21-官方渠道推荐">2.1 官方渠道（推荐）</a></li>
-          </ol>
-        </li>
-        <li><a href="#3-详细安装步骤windows-示例">3. 详细安装步骤（Windows 示例）</a></li>
-        <li><a href="#4-配置conda环境">4. 配置conda环境</a></li>
-        <li><a href="#5-配置-anaconda-解释器关键步骤">5. 配置 Anaconda 解释器（关键步骤）</a></li>
-      </ol>
-    </li>
+    <li><a href="#任务概要">任务概要</a></li>
+    <li><a href="#要求必做">要求（必做）</a></li>
+    <li><a href="#硬件与物料">硬件与物料</a></li>
+    <li><a href="#参考方案及源码">参考方案及源码</a></li>
   </ol>
 </nav>
         </div>
@@ -307,7 +284,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/">Anaconda及pycharm的安装</a>
+            <a href="/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">IST实验室第一次考核的解决方案</a>
         </h2>
     
         
@@ -329,7 +306,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-08-16</time>
+                <time class="article-time--published">2025-10-14</time>
             </div>
         
 
@@ -345,201 +322,35 @@
     <section class="article-content">
     
     
-    <h1 id="python开发环境搭建指南anaconda与pycharm安装教程">Python开发环境搭建指南：Anaconda与PyCharm安装教程
-</h1><h2 id="前言">前言
-</h2><p>本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。</p>
-<hr>
-<h2 id="一anaconda安装指南">一、Anaconda安装指南
-</h2><h3 id="1-anaconda是什么">1. Anaconda是什么？
-</h3><p>Anaconda是Python的一个发行版，它包含：</p>
-<ul>
-<li>Python解释器</li>
-<li>Conda包管理器（比pip更强大的依赖管理）</li>
-<li>180+预装科学计算库（如NumPy, Pandas, Matplotlib等）</li>
-<li>Jupyter Notebook等实用工具</li>
+    <h1 id="ist-视觉组第一次考核--彩色物块检测c--opencv--cmake">IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake）
+</h1><h2 id="任务概要">任务概要
+</h2><p>使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。</p>
+<h2 id="要求必做">要求（必做）
+</h2><ul>
+<li>开发语言：C++</li>
+<li>计算机视觉库：OpenCV（建议 4.8.0）</li>
+<li>构建系统：CMake</li>
+<li>运行环境：Ubuntu 22.04（建议在 VM 或双系统上进行）</li>
+<li>功能：实时读取 USB 相机、显示画面、检测彩色物块并用方框标出、显示颜色名称</li>
 </ul>
-<p>安装Anaconda后，您就无需单独安装Python和其他基础库了。</p>
-<h3 id="2-下载安装包">2. 下载安装包
-</h3><h4 id="21-官方渠道不推荐新手使用">2.1 官方渠道（不推荐新手使用）
-</h4><p>官网地址：<a class="link" href="https://www.anaconda.com"  target="_blank" rel="noopener"
-    >https://www.anaconda.com</a></p>
-<h4 id="22-国内镜像推荐">2.2 国内镜像（推荐）
-</h4><p>清华大学开源镜像站：
-<a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/"  target="_blank" rel="noopener"
-    >https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-<p>选择对应操作系统（由于清华源内容很多，找的时候一定要看清）：
-<img src="/images/python/anaconda%e4%b8%8b%e8%bd%bd.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda下载界面"
-	
-	
-></p>
-<h3 id="3-详细安装步骤windows示例">3. 详细安装步骤（Windows示例）
-</h3><ol>
-<li><strong>运行安装程序</strong>：双击下载的.exe文件</li>
-<li><strong>用户选择</strong>：建议选择&quot;Just Me&quot;（仅当前用户）</li>
-<li><strong>安装路径</strong>：建议修改为<code>D:\Anaconda3</code>等非系统盘路径，别安装到C盘就行</li>
-<li><strong>高级选项</strong>（关键步骤）：
-<ul>
-<li>✅ Add Anaconda to my PATH environment variable(如果你想要自己手动添加到环境变量也可以不勾选)</li>
-<li>✅ Register Anaconda as my default Python 3.x</li>
+<h2 id="硬件与物料">硬件与物料
+</h2><ul>
+<li>USB 相机（实验室提供）</li>
+<li>彩色物块（实验室提供）</li>
+<li>电脑（自备）</li>
 </ul>
-</li>
-<li>等待安装完成（约10-20分钟）</li>
-</ol>
-<h3 id="4-验证安装">4. 验证安装
-</h3><p>打开命令提示符（Win+R → 输入cmd），执行：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda --version
-</span></span><span class="line"><span class="cl"><span class="c1"># 应显示类似：conda 23.7.4</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/images/python/anaconda%e4%b8%8b%e8%bd%bd%e6%88%90%e5%8a%9f.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></p>
-<h2 id="二pycharm安装指南">二、pycharm安装指南
-</h2><h3 id="1-pycharm-是什么">1. PyCharm 是什么？
-</h3><p>PyCharm 是 JetBrains 开发的一款专业 Python IDE，具备：</p>
-<ul>
-<li>智能代码补全与语法高亮</li>
-<li>图形化调试器 &amp; 测试运行器</li>
-<li>Git / SVN / Docker 等一键集成</li>
-<li>内置终端、虚拟环境管理与 Conda 支持</li>
-<li>科学模式（Scientific Mode），可无缝调用 Anaconda 中的 NumPy、Matplotlib 等库</li>
-</ul>
-<h3 id="2-下载安装包-1">2. 下载安装包
-</h3><h4 id="21-官方渠道推荐">2.1 官方渠道（推荐）
-</h4><p>官网地址：https://www.jetbrains.com/pycharm/download<br>
-之前本来还分社区版（白嫖）和专业版（氪佬），但是好像这段时间统一成一个程序里了，可选择pro用户。</p>
-<h3 id="3-详细安装步骤windows-示例">3. 详细安装步骤（Windows 示例）
-</h3><ol>
-<li>
-<p><strong>运行安装程序</strong><br>
-双击下载的 <code>pycharm-2024.x.x.exe</code> → 点击 “Next”。</p>
-</li>
-<li>
-<p><strong>安装路径</strong><br>
-建议改为 <code>D:\JetBrains\PyCharm 2024.x</code>，避免 C 盘空间不足。</p>
-</li>
-<li>
-<p><strong>安装选项</strong>（建议全部勾选）</p>
-<ul>
-<li>✅ Create Desktop Shortcut（64-bit launcher）</li>
-<li>✅ Add &ldquo;Open Folder as Project&rdquo;</li>
-<li>✅ .py 关联</li>
-<li>✅ Add launchers dir to the PATH（后续命令行可直接 <code>pycharm</code> 打开，没错，这也是为什么anaconda也让你放环境中的理由）</li>
-</ul>
-</li>
-</ol>
-<h3 id="4-配置conda环境">4. 配置conda环境
-</h3><p>1.在你的任务栏中搜索<code>anaconda prompt</code>，打开之后输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n myenv <span class="nv">python</span><span class="o">=</span>3.11
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在这里myenv是你创建的虚拟环境的名字，3.11是这个环境中python的版本号
-2.稍等片刻后输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda activate myenv
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>3.像这样你就创建成功了
-<img src="/images/python/%e7%8e%af%e5%a2%83.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></p>
-<h3 id="5-配置-anaconda-解释器关键步骤">5. 配置 Anaconda 解释器（关键步骤）
-</h3><p>可以先去网上搜索中文插件</p>
-<ol>
-<li>
-<p><strong>新建项目</strong><br>
-打开 PyCharm → New Project → Location 填写 <code>D:\Code\PyDemo</code>。</p>
-</li>
-<li>
-<p><strong>选择 Conda 环境</strong></p>
-<ul>
-<li>直接打开右下角的地方，如图，选择添加新的解释器
-<img src="/images/python/%e9%85%8d%e7%bd%ae.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></li>
-<li>选择现有，类型选择conda类型，conda路径在anaconda的下载地址中找类似于我这个
-E:\anaconda\Scripts\conda.exe（我安装到了E盘）
-<img src="/images/python/%e5%8a%a0%e8%bd%bd%e7%8e%af%e5%a2%83.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></li>
-<li>环境选择我们刚才创建好的<code>myenv</code>，点击确认</li>
-</ul>
-</li>
-<li>
-<p><strong>验证</strong><br>
-新建 <code>hello.py</code> 输入以下代码并运行 <code>Shift+F10</code>：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello world&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如果可以正常输出<code>hello world</code>那么就成功安装好了。</p>
-</li>
-</ol>
+<p>注意：使用后及时归还实验室物品并保持卫生。</p>
+<h2 id="参考方案及源码">参考方案及源码
+</h2><p>参考方案及源码已经放入此仓库：<a class="link" href="https://github.com/Galileo927/IST_25_firsttest.git"  target="_blank" rel="noopener"
+    >IST_25_firsttest</a></p>
+<blockquote>
+<p>程序参数需要自己调整</p></blockquote>
 
 </section>
 
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/python/">Python</a>
-        
-    </section>
-
 
     </footer>
 

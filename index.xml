@@ -7,7 +7,38 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Wed, 01 Oct 2025 22:30:41 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 14 Oct 2025 16:57:30 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IST实验室第一次考核的解决方案</title>
+        <link>https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+        <pubDate>Tue, 14 Oct 2025 16:57:30 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+        <description>&lt;h1 id=&#34;ist-视觉组第一次考核--彩色物块检测c--opencv--cmake&#34;&gt;IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake）
+&lt;/h1&gt;&lt;h2 id=&#34;任务概要&#34;&gt;任务概要
+&lt;/h2&gt;&lt;p&gt;使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。&lt;/p&gt;
+&lt;h2 id=&#34;要求必做&#34;&gt;要求（必做）
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;开发语言：C++&lt;/li&gt;
+&lt;li&gt;计算机视觉库：OpenCV（建议 4.8.0）&lt;/li&gt;
+&lt;li&gt;构建系统：CMake&lt;/li&gt;
+&lt;li&gt;运行环境：Ubuntu 22.04（建议在 VM 或双系统上进行）&lt;/li&gt;
+&lt;li&gt;功能：实时读取 USB 相机、显示画面、检测彩色物块并用方框标出、显示颜色名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;硬件与物料&#34;&gt;硬件与物料
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;USB 相机（实验室提供）&lt;/li&gt;
+&lt;li&gt;彩色物块（实验室提供）&lt;/li&gt;
+&lt;li&gt;电脑（自备）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：使用后及时归还实验室物品并保持卫生。&lt;/p&gt;
+&lt;h2 id=&#34;参考方案及源码&#34;&gt;参考方案及源码
+&lt;/h2&gt;&lt;p&gt;参考方案及源码已经放入此仓库：&lt;a class=&#34;link&#34; href=&#34;https://github.com/Galileo927/IST_25_firsttest.git&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;IST_25_firsttest&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;程序参数需要自己调整&lt;/p&gt;&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>Windows与ubuntu双系统的安装</title>
         <link>https://Galileo927.github.io/p/windows%E4%B8%8Eubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85/</link>
         <pubDate>Wed, 01 Oct 2025 22:30:41 +0800</pubDate>
