@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
-<title>IST实验室第一次考核的解决方案</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。\n">
+<title>关于github的一些使用方法</title>
 
-<link rel='canonical' href='https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/'>
+<link rel='canonical' href='https://Galileo927.github.io/p/%E5%85%B3%E4%BA%8Egithub%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="IST实验室第一次考核的解决方案">
-<meta property='og:description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
-<meta property='og:url' content='https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/'>
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="关于github的一些使用方法">
+<meta property='og:description' content="GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/%E5%85%B3%E4%BA%8Egithub%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/'>
 <meta property='og:site_name' content='Galileo Y'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-14T16:57:30&#43;08:00'/><meta property='article:modified_time' content='2025-10-14T16:57:30&#43;08:00'/>
-<meta name="twitter:title" content="IST实验室第一次考核的解决方案">
-<meta name="twitter:description" content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-11-12T12:16:19&#43;08:00'/><meta property='article:modified_time' content='2025-11-12T12:16:19&#43;08:00'/>
+<meta name="twitter:title" content="关于github的一些使用方法">
+<meta name="twitter:description" content="GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -261,10 +261,24 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#任务概要">任务概要</a></li>
-    <li><a href="#要求必做">要求（必做）</a></li>
-    <li><a href="#硬件与物料">硬件与物料</a></li>
-    <li><a href="#参考方案及源码">参考方案及源码</a></li>
+    <li><a href="#准备工作安装-git">准备工作：安装 Git</a></li>
+    <li><a href="#核心概念">核心概念</a></li>
+    <li><a href="#基本工作流程">基本工作流程</a>
+      <ol>
+        <li><a href="#1-创建一个新的仓库">1. 创建一个新的仓库</a></li>
+        <li><a href="#2-克隆仓库到本地">2. 克隆仓库到本地</a></li>
+        <li><a href="#3-添加和提交更改">3. 添加和提交更改</a></li>
+        <li><a href="#4-推送更改到-github">4. 推送更改到 GitHub</a></li>
+      </ol>
+    </li>
+    <li><a href="#分支与协作">分支与协作</a>
+      <ol>
+        <li><a href="#1-创建并切换到新分支">1. 创建并切换到新分支</a></li>
+        <li><a href="#2-推送新分支到-github">2. 推送新分支到 GitHub</a></li>
+        <li><a href="#3-创建拉取请求-pull-request">3. 创建拉取请求 (Pull Request)</a></li>
+      </ol>
+    </li>
+    <li><a href="#github-pages">GitHub Pages</a></li>
   </ol>
 </nav>
         </div>
@@ -284,7 +298,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">IST实验室第一次考核的解决方案</a>
+            <a href="/p/%E5%85%B3%E4%BA%8Egithub%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">关于github的一些使用方法</a>
         </h2>
     
         
@@ -306,7 +320,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-10-14</time>
+                <time class="article-time--published">2025-11-12</time>
             </div>
         
 
@@ -322,30 +336,136 @@
     <section class="article-content">
     
     
-    <h1 id="ist-视觉组第一次考核--彩色物块检测c--opencv--cmake">IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake）
-</h1><h2 id="任务概要">任务概要
-</h2><p>使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。</p>
-<h2 id="要求必做">要求（必做）
-</h2><ul>
-<li>开发语言：C++</li>
-<li>计算机视觉库：OpenCV（建议 4.8.0）</li>
-<li>构建系统：CMake</li>
-<li>运行环境：Ubuntu 22.04（建议在 VM 或双系统上进行）</li>
-<li>功能：实时读取 USB 相机、显示画面、检测彩色物块并用方框标出、显示颜色名称</li>
+    <p>GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。</p>
+<h2 id="准备工作安装-git">准备工作：安装 Git
+</h2><p>在开始使用 GitHub 之前，你的电脑上需要安装 Git。Git 是一个免费、开源的分布式版本控制系统，是与 GitHub 交互的基础。</p>
+<p>你可以从 <a class="link" href="https://git-scm.com/downloads"  target="_blank" rel="noopener"
+    >Git 官网</a> 下载适合你操作系统的安装包。安装过程通常很简单，保持默认设置即可。</p>
+<p>安装完成后，你可以在终端（Windows 上的 PowerShell 或 CMD，macOS/Linux 上的 Terminal）中输入以下命令来验证 Git 是否安装成功：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果能看到版本号，说明 Git 已经成功安装。</p>
+<h2 id="核心概念">核心概念
+</h2><p>在开始使用 GitHub 之前，了解一些核心概念非常重要：</p>
+<ul>
+<li><strong>仓库 (Repository)</strong>: 你的项目存放的地方。可以想象成一个项目的文件夹，里面包含了项目的所有文件和修订历史。</li>
+<li><strong>克隆 (Clone)</strong>: 将远程仓库复制到你的本地计算机上。</li>
+<li><strong>提交 (Commit)</strong>: 将你的代码更改保存到本地仓库。每次提交都有一个唯一的 ID 和一条描述信息。</li>
+<li><strong>推送 (Push)</strong>: 将本地仓库的提交上传到远程仓库（例如 GitHub）。</li>
+<li><strong>拉取 (Pull)</strong>: 从远程仓库获取最新的更改并合并到你的本地仓库。</li>
+<li><strong>分支 (Branch)</strong>: 为了在不影响主线（通常是 <code>main</code> 或 <code>master</code> 分支）开发的情况下进行功能开发或修复 bug，你可以创建一个分支。开发完成后，再将分支合并到主线。</li>
+<li><strong>拉取请求 (Pull Request / PR)</strong>: 当你希望将你的分支合并到另一个分支时，你可以创建一个拉取请求。这是一个请求审查和讨论你的代码更改的地方。</li>
+<li><strong>合并 (Merge)</strong>: 将一个分支的更改合并到另一个分支。</li>
 </ul>
-<h2 id="硬件与物料">硬件与物料
-</h2><ul>
-<li>USB 相机（实验室提供）</li>
-<li>彩色物块（实验室提供）</li>
-<li>电脑（自备）</li>
-</ul>
-<p>注意：使用后及时归还实验室物品并保持卫生。</p>
-<h2 id="参考方案及源码">参考方案及源码
-</h2><p>参考方案及源码已经放入此仓库：<a class="link" href="https://github.com/Galileo927/IST_25_firsttest.git"  target="_blank" rel="noopener"
-    >IST_25_firsttest</a></p>
-<blockquote>
-<p>程序参数需要自己调整</p>
-</blockquote>
+<h2 id="基本工作流程">基本工作流程
+</h2><h3 id="1-创建一个新的仓库">1. 创建一个新的仓库
+</h3><ol>
+<li>登录你的 GitHub 账户。</li>
+<li>点击右上角的 &ldquo;+&rdquo; 图标，然后选择 &ldquo;New repository&rdquo;。</li>
+<li>为你的仓库命名，添加一个可选的描述。</li>
+<li>选择 &ldquo;Public&rdquo;（公开）或 &ldquo;Private&rdquo;（私有）。</li>
+<li>你可以选择使用 <code>README</code> 文件、<code>.gitignore</code> 文件和许可证来初始化仓库。</li>
+<li>点击 &ldquo;Create repository&rdquo;。</li>
+</ol>
+<h3 id="2-克隆仓库到本地">2. 克隆仓库到本地
+</h3><p>要对仓库进行更改，你需要先把它克隆到你的电脑上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/your-username/your-repository.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将 <code>your-username</code> 和 <code>your-repository</code> 替换为你的 GitHub 用户名和仓库名。</p>
+<h3 id="3-添加和提交更改">3. 添加和提交更改
+</h3><p>在本地对项目文件进行修改后，你需要将这些更改提交到本地仓库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 进入仓库目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> your-repository
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看文件状态</span>
+</span></span><span class="line"><span class="cl">git status
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加所有更改的文件到暂存区</span>
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 提交更改，并附上描述信息</span>
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;你的提交信息，例如：添加了新功能&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-推送更改到-github">4. 推送更改到 GitHub
+</h3><p>提交到本地仓库后，你需要将这些更改推送到 GitHub 上的远程仓库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(<code>main</code> 可能是你的主分支名，也可能是 <code>master</code>)</p>
+<h2 id="分支与协作">分支与协作
+</h2><p>分支是 GitHub 协作的核心。</p>
+<h3 id="1-创建并切换到新分支">1. 创建并切换到新分支
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 创建一个名为 feature-x 的新分支并切换过去</span>
+</span></span><span class="line"><span class="cl">git checkout -b feature-x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-推送新分支到-github">2. 推送新分支到 GitHub
+</h3><p>在你的新分支上进行提交后，将该分支推送到远程仓库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin feature-x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-创建拉取请求-pull-request">3. 创建拉取请求 (Pull Request)
+</h3><ol>
+<li>在 GitHub 上你的仓库页面，你会看到一个提示，可以为 <code>feature-x</code> 分支创建一个拉取请求。</li>
+<li>点击 &ldquo;Compare &amp; pull request&rdquo;。</li>
+<li>填写标题和描述，说明你的更改内容。</li>
+<li>点击 &ldquo;Create pull request&rdquo;。</li>
+</ol>
+<p>之后，项目维护者可以审查你的代码，提出修改意见，最后将其合并到主分支中。</p>
+<h2 id="github-pages">GitHub Pages
+</h2><p>GitHub Pages 是 GitHub 提供的一个静态网站托管服务。你可以用它来托管你的个人博客、项目文档等。</p>
+<ol>
+<li>确保你的仓库中有一个 <code>index.html</code> 文件。</li>
+<li>进入仓库的 &ldquo;Settings&rdquo; 页面。</li>
+<li>在左侧菜单中选择 &ldquo;Pages&rdquo;。</li>
+<li>在 &ldquo;Source&rdquo; 部分，选择你想要部署的分支（通常是 <code>main</code>）。</li>
+<li>保存后，GitHub 会为你的网站生成一个 URL，格式通常是 <code>https://your-username.github.io/your-repository/</code>。</li>
+</ol>
+<p>希望这篇指南能帮助你更好地开始使用 GitHub！</p>
 
 </section>
 
