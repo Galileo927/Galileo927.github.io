@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
-<title>IST实验室第一次考核的解决方案</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Windows下ubuntu双系统的安装 前言 我们IST实验室选择了Ubuntu作为视觉工作的系统，通常使用22.04版本。详细安装流程见下文。\n如果你想生动地了解如何下载，可以去这个网址 B站教学 看视频学习。\n">
+<title>Windows与ubuntu双系统的安装</title>
 
-<link rel='canonical' href='https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/'>
+<link rel='canonical' href='https://Galileo927.github.io/p/windows-and-ubuntu-dual-boot-installation/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="IST实验室第一次考核的解决方案">
-<meta property='og:description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
-<meta property='og:url' content='https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/'>
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Windows与ubuntu双系统的安装">
+<meta property='og:description' content="Windows下ubuntu双系统的安装 前言 我们IST实验室选择了Ubuntu作为视觉工作的系统，通常使用22.04版本。详细安装流程见下文。\n如果你想生动地了解如何下载，可以去这个网址 B站教学 看视频学习。\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/windows-and-ubuntu-dual-boot-installation/'>
 <meta property='og:site_name' content='Galileo Y'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-14T16:57:30&#43;08:00'/><meta property='article:modified_time' content='2025-10-14T16:57:30&#43;08:00'/>
-<meta name="twitter:title" content="IST实验室第一次考核的解决方案">
-<meta name="twitter:description" content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-01T22:30:41&#43;08:00'/><meta property='article:modified_time' content='2025-10-01T22:30:41&#43;08:00'/>
+<meta name="twitter:title" content="Windows与ubuntu双系统的安装">
+<meta name="twitter:description" content="Windows下ubuntu双系统的安装 前言 我们IST实验室选择了Ubuntu作为视觉工作的系统，通常使用22.04版本。详细安装流程见下文。\n如果你想生动地了解如何下载，可以去这个网址 B站教学 看视频学习。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -261,10 +261,15 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#任务概要">任务概要</a></li>
-    <li><a href="#要求必做">要求（必做）</a></li>
-    <li><a href="#硬件与物料">硬件与物料</a></li>
-    <li><a href="#参考方案及源码">参考方案及源码</a></li>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#准备工作">准备工作</a></li>
+    <li><a href="#windows-分区调整">Windows 分区调整</a></li>
+    <li><a href="#制作-ubuntu-启动盘">制作 Ubuntu 启动盘</a></li>
+    <li><a href="#biosuefi-设置">BIOS/UEFI 设置</a></li>
+    <li><a href="#安装-ubuntu">安装 Ubuntu</a></li>
+    <li><a href="#引导修复与启动选择">引导修复与启动选择</a></li>
+    <li><a href="#常见问题与解决">常见问题与解决</a></li>
+    <li><a href="#结语">结语</a></li>
   </ol>
 </nav>
         </div>
@@ -284,7 +289,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">IST实验室第一次考核的解决方案</a>
+            <a href="/p/windows-and-ubuntu-dual-boot-installation/">Windows与ubuntu双系统的安装</a>
         </h2>
     
         
@@ -306,7 +311,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-10-14</time>
+                <time class="article-time--published">2025-10-01</time>
             </div>
         
 
@@ -322,30 +327,71 @@
     <section class="article-content">
     
     
-    <h1 id="ist-视觉组第一次考核--彩色物块检测c--opencv--cmake">IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake）
-</h1><h2 id="任务概要">任务概要
-</h2><p>使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。</p>
-<h2 id="要求必做">要求（必做）
+    <h1 id="windows下ubuntu双系统的安装">Windows下ubuntu双系统的安装
+</h1><h2 id="前言">前言
+</h2><p>我们IST实验室选择了Ubuntu作为视觉工作的系统，通常使用22.04版本。详细安装流程见下文。</p>
+<p>如果你想生动地了解如何下载，可以去这个网址 <a class="link" href="https://www.bilibili.com/video/BV1554y1n7zv/?share_source=copy_web&amp;vd_source=48d5cb51bbb656914376a7aa87b5e244"  target="_blank" rel="noopener"
+    >B站教学</a> 看视频学习。</p>
+<h2 id="准备工作">准备工作
 </h2><ul>
-<li>开发语言：C++</li>
-<li>计算机视觉库：OpenCV（建议 4.8.0）</li>
-<li>构建系统：CMake</li>
-<li>运行环境：Ubuntu 22.04（建议在 VM 或双系统上进行）</li>
-<li>功能：实时读取 USB 相机、显示画面、检测彩色物块并用方框标出、显示颜色名称</li>
+<li>一台已安装 Windows 的电脑</li>
+<li>至少 100GB 的可用磁盘空间</li>
+<li>一个 8GB 及以上的 U盘（用于制作 Ubuntu 启动盘）</li>
+<li>Ubuntu 镜像文件（可从官网 <a class="link" href="https://ubuntu.com/download"  target="_blank" rel="noopener"
+    >https://ubuntu.com/download</a> 获取）</li>
+<li>备份重要数据，防止操作失误导致数据丢失</li>
+<li>有问题时不用慌，先去看一下后文的常见问题有没有解决方案，也可以询问AI</li>
 </ul>
-<h2 id="硬件与物料">硬件与物料
+<h2 id="windows-分区调整">Windows 分区调整
+</h2><ol>
+<li>打开“磁盘管理”工具（Win+X → 磁盘管理）。</li>
+<li>右键 C 盘或其他分区，选择“压缩卷”，为 Ubuntu 预留空间（建议 20GB 以上）。</li>
+<li>压缩后会出现“未分配空间”，无需新建分区，安装时由 Ubuntu 自动分配。</li>
+</ol>
+<h2 id="制作-ubuntu-启动盘">制作 Ubuntu 启动盘
+</h2><ol>
+<li>下载并安装 Rufus 工具（<a class="link" href="https://rufus.ie/"  target="_blank" rel="noopener"
+    >官网地址</a>）。</li>
+<li>插入 U盘，打开 Rufus，选择下载好的 Ubuntu 镜像。</li>
+<li>保持默认设置，点击“开始”制作启动盘。</li>
+</ol>
+<h2 id="biosuefi-设置">BIOS/UEFI 设置
+</h2><ol>
+<li>重启电脑，进入 BIOS 设置（根据不同电脑品牌自行查询）。</li>
+<li>将 U盘设置为第一启动项。</li>
+<li>若为 UEFI 模式，建议关闭安全启动（Secure Boot）。</li>
+</ol>
+<h2 id="安装-ubuntu">安装 Ubuntu
+</h2><ol>
+<li>插入启动盘，重启电脑进入 Ubuntu 安装界面。</li>
+<li>选择“安装 Ubuntu”。</li>
+<li>安装类型选择“与 Windows 共存”或“其他选项”，手动选择刚才压缩出的未分配空间。（个人推荐最好选择“与 Windows 共存”，操作简单）</li>
+<li>设置分区（推荐：/ 根分区 20GB+，swap 2GB+，/home 可选）。</li>
+<li>按提示完成安装，期间设置用户名、密码等。</li>
+</ol>
+<h2 id="引导修复与启动选择">引导修复与启动选择
 </h2><ul>
-<li>USB 相机（实验室提供）</li>
-<li>彩色物块（实验室提供）</li>
-<li>电脑（自备）</li>
+<li>安装完成后，重启电脑会进入 GRUB 引导界面，可选择 Windows 或 Ubuntu。</li>
+<li>若未出现 GRUB，可用启动盘进入 Ubuntu，安装并运行 boot-repair 工具修复引导。</li>
 </ul>
-<p>注意：使用后及时归还实验室物品并保持卫生。</p>
-<h2 id="参考方案及源码">参考方案及源码
-</h2><p>参考方案及源码已经放入此仓库：<a class="link" href="https://github.com/Galileo927/IST_25_firsttest.git"  target="_blank" rel="noopener"
-    >IST_25_firsttest</a></p>
-<blockquote>
-<p>程序参数需要自己调整</p>
-</blockquote>
+<h2 id="常见问题与解决">常见问题与解决
+</h2><ul>
+<li><strong>分区丢失/数据丢失</strong>：安装前务必备份重要数据。</li>
+<li><strong>无法进入 Ubuntu/Windows</strong>：检查 BIOS 启动项及分区设置，必要时使用 boot-repair。</li>
+<li><strong>GRUB 未显示</strong>：尝试修复引导或检查分区格式。</li>
+<li><strong>英伟达显卡安装黑屏或安全模式问题</strong>：
+<ul>
+<li>如果在安装 Ubuntu 时出现黑屏或只能进入安全模式（可视范围很小），且 Windows 进入了独显模式，有两种解决方案：
+<ol>
+<li>进入 Windows，关闭独显模式，重新进入安装界面。安装完成后，进入 Ubuntu，打开“附加驱动”，安装英伟达驱动，优先选择带有“test”或“专用”字样的版本。</li>
+<li>在 GRUB 引导界面时，将光标移动到 Ubuntu 安装选项，不要回车。按“E”进入编辑模式，使用方向键向下滚动，找到以 linux 开头的一行（结尾通常是 $vt_handoff 或 quiet splash），在 splash 后面加上 nomodeset，然后按 Ctrl+X 启动。进入系统后，按方案1安装驱动。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="结语">结语
+</h2><p>通过以上步骤，你可以在一台电脑上顺利安装并使用 Windows 与 Ubuntu 双系统。遇到问题时，可以发到群里让你亲爱的学长帮助你，如果学长也无法帮助你，可以查阅官方文档或相关社区获取帮助，如果還是無法解決，去電腦店刷機。</p>
 
 </section>
 

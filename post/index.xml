@@ -9,10 +9,10 @@
         <copyright>Example Person</copyright>
         <lastBuildDate>Wed, 12 Nov 2025 12:16:19 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>关于github的一些使用方法</title>
-        <link>https://Galileo927.github.io/p/%E5%85%B3%E4%BA%8Egithub%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+        <link>https://Galileo927.github.io/p/about-github/</link>
         <pubDate>Wed, 12 Nov 2025 12:16:19 +0800</pubDate>
         
-        <guid>https://Galileo927.github.io/p/%E5%85%B3%E4%BA%8Egithub%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+        <guid>https://Galileo927.github.io/p/about-github/</guid>
         <description>&lt;p&gt;GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。&lt;/p&gt;
 &lt;h2 id=&#34;准备工作安装-git&#34;&gt;准备工作：安装 Git
 &lt;/h2&gt;&lt;p&gt;在开始使用 GitHub 之前，你的电脑上需要安装 Git。Git 是一个免费、开源的分布式版本控制系统，是与 GitHub 交互的基础。&lt;/p&gt;
@@ -147,10 +147,10 @@
         </item>
         <item>
         <title>IST实验室第一次考核的解决方案</title>
-        <link>https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+        <link>https://Galileo927.github.io/p/ist-first-assessment-solution/</link>
         <pubDate>Tue, 14 Oct 2025 16:57:30 +0800</pubDate>
         
-        <guid>https://Galileo927.github.io/p/ist%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%80%83%E6%A0%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+        <guid>https://Galileo927.github.io/p/ist-first-assessment-solution/</guid>
         <description>&lt;h1 id=&#34;ist-视觉组第一次考核--彩色物块检测c--opencv--cmake&#34;&gt;IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake）
 &lt;/h1&gt;&lt;h2 id=&#34;任务概要&#34;&gt;任务概要
 &lt;/h2&gt;&lt;p&gt;使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。&lt;/p&gt;
@@ -179,10 +179,10 @@
         </item>
         <item>
         <title>Windows与ubuntu双系统的安装</title>
-        <link>https://Galileo927.github.io/p/windows%E4%B8%8Eubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+        <link>https://Galileo927.github.io/p/windows-and-ubuntu-dual-boot-installation/</link>
         <pubDate>Wed, 01 Oct 2025 22:30:41 +0800</pubDate>
         
-        <guid>https://Galileo927.github.io/p/windows%E4%B8%8Eubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+        <guid>https://Galileo927.github.io/p/windows-and-ubuntu-dual-boot-installation/</guid>
         <description>&lt;h1 id=&#34;windows下ubuntu双系统的安装&#34;&gt;Windows下ubuntu双系统的安装
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;我们IST实验室选择了Ubuntu作为视觉工作的系统，通常使用22.04版本。详细安装流程见下文。&lt;/p&gt;
@@ -247,15 +247,15 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语
-&lt;/h2&gt;&lt;p&gt;通过以上步骤，你可以在一台电脑上顺利安装并使用 Windows 与 Ubuntu 双系统。遇到问题时，可以发到群里让你亲爱的学长帮助你，如果学长也无法帮助你，可以查阅官方文档或相关社区获取帮助，如果还是无法解决，去电脑店刷机。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;通过以上步骤，你可以在一台电脑上顺利安装并使用 Windows 与 Ubuntu 双系统。遇到问题时，可以发到群里让你亲爱的学长帮助你，如果学长也无法帮助你，可以查阅官方文档或相关社区获取帮助，如果還是無法解決，去電腦店刷機。&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Anaconda及pycharm的安装</title>
-        <link>https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+        <link>https://Galileo927.github.io/p/anaconda-and-pycharm-installation/</link>
         <pubDate>Sat, 16 Aug 2025 13:14:47 +0800</pubDate>
         
-        <guid>https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+        <guid>https://Galileo927.github.io/p/anaconda-and-pycharm-installation/</guid>
         <description>&lt;h1 id=&#34;python开发环境搭建指南anaconda与pycharm安装教程&#34;&gt;Python开发环境搭建指南：Anaconda与PyCharm安装教程
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。&lt;/p&gt;

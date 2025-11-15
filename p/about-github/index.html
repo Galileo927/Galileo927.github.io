@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Python开发环境搭建指南：Anaconda与PyCharm安装教程 前言 本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。\n">
-<title>Anaconda及pycharm的安装</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。\n">
+<title>关于github的一些使用方法</title>
 
-<link rel='canonical' href='https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/'>
+<link rel='canonical' href='https://Galileo927.github.io/p/about-github/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Anaconda及pycharm的安装">
-<meta property='og:description' content="Python开发环境搭建指南：Anaconda与PyCharm安装教程 前言 本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。\n">
-<meta property='og:url' content='https://Galileo927.github.io/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/'>
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="关于github的一些使用方法">
+<meta property='og:description' content="GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/about-github/'>
 <meta property='og:site_name' content='Galileo Y'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2025-08-16T13:14:47&#43;08:00'/><meta property='article:modified_time' content='2025-08-16T13:14:47&#43;08:00'/>
-<meta name="twitter:title" content="Anaconda及pycharm的安装">
-<meta name="twitter:description" content="Python开发环境搭建指南：Anaconda与PyCharm安装教程 前言 本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-11-12T12:16:19&#43;08:00'/><meta property='article:modified_time' content='2025-11-12T12:16:19&#43;08:00'/>
+<meta name="twitter:title" content="关于github的一些使用方法">
+<meta name="twitter:description" content="GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -261,33 +261,24 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#前言">前言</a></li>
-    <li><a href="#一anaconda安装指南">一、Anaconda安装指南</a>
+    <li><a href="#准备工作安装-git">准备工作：安装 Git</a></li>
+    <li><a href="#核心概念">核心概念</a></li>
+    <li><a href="#基本工作流程">基本工作流程</a>
       <ol>
-        <li><a href="#1-anaconda是什么">1. Anaconda是什么？</a></li>
-        <li><a href="#2-下载安装包">2. 下载安装包</a>
-          <ol>
-            <li><a href="#21-官方渠道不推荐新手使用">2.1 官方渠道（不推荐新手使用）</a></li>
-            <li><a href="#22-国内镜像推荐">2.2 国内镜像（推荐）</a></li>
-          </ol>
-        </li>
-        <li><a href="#3-详细安装步骤windows示例">3. 详细安装步骤（Windows示例）</a></li>
-        <li><a href="#4-验证安装">4. 验证安装</a></li>
+        <li><a href="#1-创建一个新的仓库">1. 创建一个新的仓库</a></li>
+        <li><a href="#2-克隆仓库到本地">2. 克隆仓库到本地</a></li>
+        <li><a href="#3-添加和提交更改">3. 添加和提交更改</a></li>
+        <li><a href="#4-推送更改到-github">4. 推送更改到 GitHub</a></li>
       </ol>
     </li>
-    <li><a href="#二pycharm安装指南">二、pycharm安装指南</a>
+    <li><a href="#分支与协作">分支与协作</a>
       <ol>
-        <li><a href="#1-pycharm-是什么">1. PyCharm 是什么？</a></li>
-        <li><a href="#2-下载安装包-1">2. 下载安装包</a>
-          <ol>
-            <li><a href="#21-官方渠道推荐">2.1 官方渠道（推荐）</a></li>
-          </ol>
-        </li>
-        <li><a href="#3-详细安装步骤windows-示例">3. 详细安装步骤（Windows 示例）</a></li>
-        <li><a href="#4-配置conda环境">4. 配置conda环境</a></li>
-        <li><a href="#5-配置-anaconda-解释器关键步骤">5. 配置 Anaconda 解释器（关键步骤）</a></li>
+        <li><a href="#1-创建并切换到新分支">1. 创建并切换到新分支</a></li>
+        <li><a href="#2-推送新分支到-github">2. 推送新分支到 GitHub</a></li>
+        <li><a href="#3-创建拉取请求-pull-request">3. 创建拉取请求 (Pull Request)</a></li>
       </ol>
     </li>
+    <li><a href="#github-pages">GitHub Pages</a></li>
   </ol>
 </nav>
         </div>
@@ -307,7 +298,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/anaconda%E5%8F%8Apycharm%E7%9A%84%E5%AE%89%E8%A3%85/">Anaconda及pycharm的安装</a>
+            <a href="/p/about-github/">关于github的一些使用方法</a>
         </h2>
     
         
@@ -329,7 +320,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-08-16</time>
+                <time class="article-time--published">2025-11-12</time>
             </div>
         
 
@@ -345,201 +336,142 @@
     <section class="article-content">
     
     
-    <h1 id="python开发环境搭建指南anaconda与pycharm安装教程">Python开发环境搭建指南：Anaconda与PyCharm安装教程
-</h1><h2 id="前言">前言
-</h2><p>本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。</p>
-<hr>
-<h2 id="一anaconda安装指南">一、Anaconda安装指南
-</h2><h3 id="1-anaconda是什么">1. Anaconda是什么？
-</h3><p>Anaconda是Python的一个发行版，它包含：</p>
-<ul>
-<li>Python解释器</li>
-<li>Conda包管理器（比pip更强大的依赖管理）</li>
-<li>180+预装科学计算库（如NumPy, Pandas, Matplotlib等）</li>
-<li>Jupyter Notebook等实用工具</li>
-</ul>
-<p>安装Anaconda后，您就无需单独安装Python和其他基础库了。</p>
-<h3 id="2-下载安装包">2. 下载安装包
-</h3><h4 id="21-官方渠道不推荐新手使用">2.1 官方渠道（不推荐新手使用）
-</h4><p>官网地址：<a class="link" href="https://www.anaconda.com"  target="_blank" rel="noopener"
-    >https://www.anaconda.com</a></p>
-<h4 id="22-国内镜像推荐">2.2 国内镜像（推荐）
-</h4><p>清华大学开源镜像站：
-<a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/"  target="_blank" rel="noopener"
-    >https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-<p>选择对应操作系统（由于清华源内容很多，找的时候一定要看清）：
-<img src="/images/python/anaconda%e4%b8%8b%e8%bd%bd.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda下载界面"
-	
-	
-></p>
-<h3 id="3-详细安装步骤windows示例">3. 详细安装步骤（Windows示例）
-</h3><ol>
-<li><strong>运行安装程序</strong>：双击下载的.exe文件</li>
-<li><strong>用户选择</strong>：建议选择&quot;Just Me&quot;（仅当前用户）</li>
-<li><strong>安装路径</strong>：建议修改为<code>D:\Anaconda3</code>等非系统盘路径，别安装到C盘就行</li>
-<li><strong>高级选项</strong>（关键步骤）：
-<ul>
-<li>✅ Add Anaconda to my PATH environment variable(如果你想要自己手动添加到环境变量也可以不勾选)</li>
-<li>✅ Register Anaconda as my default Python 3.x</li>
-</ul>
-</li>
-<li>等待安装完成（约10-20分钟）</li>
-</ol>
-<h3 id="4-验证安装">4. 验证安装
-</h3><p>打开命令提示符（Win+R → 输入cmd），执行：</p>
+    <p>GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。</p>
+<h2 id="准备工作安装-git">准备工作：安装 Git
+</h2><p>在开始使用 GitHub 之前，你的电脑上需要安装 Git。Git 是一个免费、开源的分布式版本控制系统，是与 GitHub 交互的基础。</p>
+<p>你可以从 <a class="link" href="https://git-scm.com/downloads"  target="_blank" rel="noopener"
+    >Git 官网</a> 下载适合你操作系统的安装包。安装过程通常很简单，保持默认设置即可。</p>
+<p>安装完成后，你可以在终端（Windows 上的 PowerShell 或 CMD，macOS/Linux 上的 Terminal）中输入以下命令来验证 Git 是否安装成功：</p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果能看到版本号，说明 Git 已经成功安装。</p>
+<h2 id="核心概念">核心概念
+</h2><p>在开始使用 GitHub 之前，了解一些核心概念非常重要：</p>
+<ul>
+<li><strong>仓库 (Repository)</strong>: 你的项目存放的地方。可以想象成一个项目的文件夹，里面包含了项目的所有文件和修订历史。</li>
+<li><strong>克隆 (Clone)</strong>: 将远程仓库复制到你的本地计算机上。</li>
+<li><strong>提交 (Commit)</strong>: 将你的代码更改保存到本地仓库。每次提交都有一个唯一的 ID 和一条描述信息。</li>
+<li><strong>推送 (Push)</strong>: 将本地仓库的提交上传到远程仓库（例如 GitHub）。</li>
+<li><strong>拉取 (Pull)</strong>: 从远程仓库获取最新的更改并合并到你的本地仓库。</li>
+<li><strong>分支 (Branch)</strong>: 为了在不影响主线（通常是 <code>main</code> 或 <code>master</code> 分支）开发的情况下进行功能开发或修复 bug，你可以创建一个分支。开发完成后，再将分支合并到主线。</li>
+<li><strong>拉取请求 (Pull Request / PR)</strong>: 当你希望将你的分支合并到另一个分支时，你可以创建一个拉取请求。这是一个请求审查和讨论你的代码更改的地方。</li>
+<li><strong>合并 (Merge)</strong>: 将一个分支的更改合并到另一个分支。</li>
+</ul>
+<h2 id="基本工作流程">基本工作流程
+</h2><h3 id="1-创建一个新的仓库">1. 创建一个新的仓库
+</h3><ol>
+<li>登录你的 GitHub 账户。</li>
+<li>点击右上角的 &ldquo;+&rdquo; 图标，然后选择 &ldquo;New repository&rdquo;。</li>
+<li>为你的仓库命名，添加一个可选的描述。</li>
+<li>选择 &ldquo;Public&rdquo;（公开）或 &ldquo;Private&rdquo;（私有）。</li>
+<li>你可以选择使用 <code>README</code> 文件、<code>.gitignore</code> 文件和许可证来初始化仓库。</li>
+<li>点击 &ldquo;Create repository&rdquo;。</li>
+</ol>
+<h3 id="2-克隆仓库到本地">2. 克隆仓库到本地
+</h3><p>要对仓库进行更改，你需要先把它克隆到你的电脑上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/your-username/your-repository.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将 <code>your-username</code> 和 <code>your-repository</code> 替换为你的 GitHub 用户名和仓库名。</p>
+<h3 id="3-添加和提交更改">3. 添加和提交更改
+</h3><p>在本地对项目文件进行修改后，你需要将这些更改提交到本地仓库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 进入仓库目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> your-repository
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看文件状态</span>
+</span></span><span class="line"><span class="cl">git status
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加所有更改的文件到暂存区</span>
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 提交更改，并附上描述信息</span>
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;你的提交信息，例如：添加了新功能&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-推送更改到-github">4. 推送更改到 GitHub
+</h3><p>提交到本地仓库后，你需要将这些更改推送到 GitHub 上的远程仓库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(<code>main</code> 可能是你的主分支名，也可能是 <code>master</code>)</p>
+<h2 id="分支与协作">分支与协作
+</h2><p>分支是 GitHub 协作的核心。</p>
+<h3 id="1-创建并切换到新分支">1. 创建并切换到新分支
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda --version
-</span></span><span class="line"><span class="cl"><span class="c1"># 应显示类似：conda 23.7.4</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 创建一个名为 feature-x 的新分支并切换过去</span>
+</span></span><span class="line"><span class="cl">git checkout -b feature-x
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/images/python/anaconda%e4%b8%8b%e8%bd%bd%e6%88%90%e5%8a%9f.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></p>
-<h2 id="二pycharm安装指南">二、pycharm安装指南
-</h2><h3 id="1-pycharm-是什么">1. PyCharm 是什么？
-</h3><p>PyCharm 是 JetBrains 开发的一款专业 Python IDE，具备：</p>
-<ul>
-<li>智能代码补全与语法高亮</li>
-<li>图形化调试器 &amp; 测试运行器</li>
-<li>Git / SVN / Docker 等一键集成</li>
-<li>内置终端、虚拟环境管理与 Conda 支持</li>
-<li>科学模式（Scientific Mode），可无缝调用 Anaconda 中的 NumPy、Matplotlib 等库</li>
-</ul>
-<h3 id="2-下载安装包-1">2. 下载安装包
-</h3><h4 id="21-官方渠道推荐">2.1 官方渠道（推荐）
-</h4><p>官网地址：https://www.jetbrains.com/pycharm/download<br>
-之前本来还分社区版（白嫖）和专业版（氪佬），但是好像这段时间统一成一个程序里了，可选择pro用户。</p>
-<h3 id="3-详细安装步骤windows-示例">3. 详细安装步骤（Windows 示例）
+</div><h3 id="2-推送新分支到-github">2. 推送新分支到 GitHub
+</h3><p>在你的新分支上进行提交后，将该分支推送到远程仓库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin feature-x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-创建拉取请求-pull-request">3. 创建拉取请求 (Pull Request)
 </h3><ol>
-<li>
-<p><strong>运行安装程序</strong><br>
-双击下载的 <code>pycharm-2024.x.x.exe</code> → 点击 “Next”。</p>
-</li>
-<li>
-<p><strong>安装路径</strong><br>
-建议改为 <code>D:\JetBrains\PyCharm 2024.x</code>，避免 C 盘空间不足。</p>
-</li>
-<li>
-<p><strong>安装选项</strong>（建议全部勾选）</p>
-<ul>
-<li>✅ Create Desktop Shortcut（64-bit launcher）</li>
-<li>✅ Add &ldquo;Open Folder as Project&rdquo;</li>
-<li>✅ .py 关联</li>
-<li>✅ Add launchers dir to the PATH（后续命令行可直接 <code>pycharm</code> 打开，没错，这也是为什么anaconda也让你放环境中的理由）</li>
-</ul>
-</li>
+<li>在 GitHub 上你的仓库页面，你会看到一个提示，可以为 <code>feature-x</code> 分支创建一个拉取请求。</li>
+<li>点击 &ldquo;Compare &amp; pull request&rdquo;。</li>
+<li>填写标题和描述，说明你的更改内容。</li>
+<li>点击 &ldquo;Create pull request&rdquo;。</li>
 </ol>
-<h3 id="4-配置conda环境">4. 配置conda环境
-</h3><p>1.在你的任务栏中搜索<code>anaconda prompt</code>，打开之后输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n myenv <span class="nv">python</span><span class="o">=</span>3.11
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在这里myenv是你创建的虚拟环境的名字，3.11是这个环境中python的版本号
-2.稍等片刻后输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda activate myenv
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>3.像这样你就创建成功了
-<img src="/images/python/%e7%8e%af%e5%a2%83.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></p>
-<h3 id="5-配置-anaconda-解释器关键步骤">5. 配置 Anaconda 解释器（关键步骤）
-</h3><p>可以先去网上搜索中文插件</p>
+<p>之后，项目维护者可以审查你的代码，提出修改意见，最后将其合并到主分支中。</p>
+<h2 id="github-pages">GitHub Pages
+</h2><p>GitHub Pages 是 GitHub 提供的一个静态网站托管服务。你可以用它来托管你的个人博客、项目文档等。</p>
 <ol>
-<li>
-<p><strong>新建项目</strong><br>
-打开 PyCharm → New Project → Location 填写 <code>D:\Code\PyDemo</code>。</p>
-</li>
-<li>
-<p><strong>选择 Conda 环境</strong></p>
-<ul>
-<li>直接打开右下角的地方，如图，选择添加新的解释器
-<img src="/images/python/%e9%85%8d%e7%bd%ae.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></li>
-<li>选择现有，类型选择conda类型，conda路径在anaconda的下载地址中找类似于我这个
-E:\anaconda\Scripts\conda.exe（我安装到了E盘）
-<img src="/images/python/%e5%8a%a0%e8%bd%bd%e7%8e%af%e5%a2%83.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Anaconda"
-	
-	
-></li>
-<li>环境选择我们刚才创建好的<code>myenv</code>，点击确认</li>
-</ul>
-</li>
-<li>
-<p><strong>验证</strong><br>
-新建 <code>hello.py</code> 输入以下代码并运行 <code>Shift+F10</code>：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello world&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如果可以正常输出<code>hello world</code>那么就成功安装好了。</p>
-</li>
+<li>确保你的仓库中有一个 <code>index.html</code> 文件。</li>
+<li>进入仓库的 &ldquo;Settings&rdquo; 页面。</li>
+<li>在左侧菜单中选择 &ldquo;Pages&rdquo;。</li>
+<li>在 &ldquo;Source&rdquo; 部分，选择你想要部署的分支（通常是 <code>main</code>）。</li>
+<li>保存后，GitHub 会为你的网站生成一个 URL，格式通常是 <code>https://your-username.github.io/your-repository/</code>。</li>
 </ol>
+<p>希望这篇指南能帮助你更好地开始使用 GitHub！</p>
 
 </section>
 
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/python/">Python</a>
-        
-    </section>
-
 
     </footer>
 
