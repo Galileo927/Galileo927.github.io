@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Git on Galileo Y</title>
+        <link>https://Galileo927.github.io/tags/git/</link>
+        <description>Recent content in Git on Galileo Y</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Example Person</copyright>
+        <lastBuildDate>Wed, 12 Nov 2025 12:16:19 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于github的一些使用方法</title>
+        <link>https://Galileo927.github.io/p/about-github/</link>
+        <pubDate>Wed, 12 Nov 2025 12:16:19 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/p/about-github/</guid>
+        <description>&lt;p&gt;GitHub 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。它不仅是代码仓库，还是一个强大的协作工具。本文将介绍一些 GitHub 的基本使用方法。&lt;/p&gt;
+&lt;h2 id=&#34;准备工作安装-git&#34;&gt;准备工作：安装 Git
+&lt;/h2&gt;&lt;p&gt;在开始使用 GitHub 之前，你的电脑上需要安装 Git。Git 是一个免费、开源的分布式版本控制系统，是与 GitHub 交互的基础。&lt;/p&gt;
+&lt;p&gt;你可以从 &lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Git 官网&lt;/a&gt; 下载适合你操作系统的安装包。安装过程通常很简单，保持默认设置即可。&lt;/p&gt;
+&lt;p&gt;安装完成后，你可以在终端（Windows 上的 PowerShell 或 CMD，macOS/Linux 上的 Terminal）中输入以下命令来验证 Git 是否安装成功：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果能看到版本号，说明 Git 已经成功安装。&lt;/p&gt;
+&lt;h2 id=&#34;核心概念&#34;&gt;核心概念
+&lt;/h2&gt;&lt;p&gt;在开始使用 GitHub 之前，了解一些核心概念非常重要：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;仓库 (Repository)&lt;/strong&gt;: 你的项目存放的地方。可以想象成一个项目的文件夹，里面包含了项目的所有文件和修订历史。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;克隆 (Clone)&lt;/strong&gt;: 将远程仓库复制到你的本地计算机上。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提交 (Commit)&lt;/strong&gt;: 将你的代码更改保存到本地仓库。每次提交都有一个唯一的 ID 和一条描述信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;推送 (Push)&lt;/strong&gt;: 将本地仓库的提交上传到远程仓库（例如 GitHub）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拉取 (Pull)&lt;/strong&gt;: 从远程仓库获取最新的更改并合并到你的本地仓库。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分支 (Branch)&lt;/strong&gt;: 为了在不影响主线（通常是 &lt;code&gt;main&lt;/code&gt; 或 &lt;code&gt;master&lt;/code&gt; 分支）开发的情况下进行功能开发或修复 bug，你可以创建一个分支。开发完成后，再将分支合并到主线。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拉取请求 (Pull Request / PR)&lt;/strong&gt;: 当你希望将你的分支合并到另一个分支时，你可以创建一个拉取请求。这是一个请求审查和讨论你的代码更改的地方。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合并 (Merge)&lt;/strong&gt;: 将一个分支的更改合并到另一个分支。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;基本工作流程&#34;&gt;基本工作流程
+&lt;/h2&gt;&lt;h3 id=&#34;1-创建一个新的仓库&#34;&gt;1. 创建一个新的仓库
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;登录你的 GitHub 账户。&lt;/li&gt;
+&lt;li&gt;点击右上角的 &amp;ldquo;+&amp;rdquo; 图标，然后选择 &amp;ldquo;New repository&amp;rdquo;。&lt;/li&gt;
+&lt;li&gt;为你的仓库命名，添加一个可选的描述。&lt;/li&gt;
+&lt;li&gt;选择 &amp;ldquo;Public&amp;rdquo;（公开）或 &amp;ldquo;Private&amp;rdquo;（私有）。&lt;/li&gt;
+&lt;li&gt;你可以选择使用 &lt;code&gt;README&lt;/code&gt; 文件、&lt;code&gt;.gitignore&lt;/code&gt; 文件和许可证来初始化仓库。&lt;/li&gt;
+&lt;li&gt;点击 &amp;ldquo;Create repository&amp;rdquo;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-克隆仓库到本地&#34;&gt;2. 克隆仓库到本地
+&lt;/h3&gt;&lt;p&gt;要对仓库进行更改，你需要先把它克隆到你的电脑上。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/your-username/your-repository.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;将 &lt;code&gt;your-username&lt;/code&gt; 和 &lt;code&gt;your-repository&lt;/code&gt; 替换为你的 GitHub 用户名和仓库名。&lt;/p&gt;
+&lt;h3 id=&#34;3-添加和提交更改&#34;&gt;3. 添加和提交更改
+&lt;/h3&gt;&lt;p&gt;在本地对项目文件进行修改后，你需要将这些更改提交到本地仓库。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 进入仓库目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; your-repository
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 查看文件状态&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git status
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 添加所有更改的文件到暂存区&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 提交更改，并附上描述信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;你的提交信息，例如：添加了新功能&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;4-推送更改到-github&#34;&gt;4. 推送更改到 GitHub
+&lt;/h3&gt;&lt;p&gt;提交到本地仓库后，你需要将这些更改推送到 GitHub 上的远程仓库。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;(&lt;code&gt;main&lt;/code&gt; 可能是你的主分支名，也可能是 &lt;code&gt;master&lt;/code&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;分支与协作&#34;&gt;分支与协作
+&lt;/h2&gt;&lt;p&gt;分支是 GitHub 协作的核心。&lt;/p&gt;
+&lt;h3 id=&#34;1-创建并切换到新分支&#34;&gt;1. 创建并切换到新分支
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 创建一个名为 feature-x 的新分支并切换过去&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git checkout -b feature-x
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;2-推送新分支到-github&#34;&gt;2. 推送新分支到 GitHub
+&lt;/h3&gt;&lt;p&gt;在你的新分支上进行提交后，将该分支推送到远程仓库。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push origin feature-x
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;3-创建拉取请求-pull-request&#34;&gt;3. 创建拉取请求 (Pull Request)
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;在 GitHub 上你的仓库页面，你会看到一个提示，可以为 &lt;code&gt;feature-x&lt;/code&gt; 分支创建一个拉取请求。&lt;/li&gt;
+&lt;li&gt;点击 &amp;ldquo;Compare &amp;amp; pull request&amp;rdquo;。&lt;/li&gt;
+&lt;li&gt;填写标题和描述，说明你的更改内容。&lt;/li&gt;
+&lt;li&gt;点击 &amp;ldquo;Create pull request&amp;rdquo;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;之后，项目维护者可以审查你的代码，提出修改意见，最后将其合并到主分支中。&lt;/p&gt;
+&lt;h2 id=&#34;github-pages&#34;&gt;GitHub Pages
+&lt;/h2&gt;&lt;p&gt;GitHub Pages 是 GitHub 提供的一个静态网站托管服务。你可以用它来托管你的个人博客、项目文档等。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;确保你的仓库中有一个 &lt;code&gt;index.html&lt;/code&gt; 文件。&lt;/li&gt;
+&lt;li&gt;进入仓库的 &amp;ldquo;Settings&amp;rdquo; 页面。&lt;/li&gt;
+&lt;li&gt;在左侧菜单中选择 &amp;ldquo;Pages&amp;rdquo;。&lt;/li&gt;
+&lt;li&gt;在 &amp;ldquo;Source&amp;rdquo; 部分，选择你想要部署的分支（通常是 &lt;code&gt;main&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;保存后，GitHub 会为你的网站生成一个 URL，格式通常是 &lt;code&gt;https://your-username.github.io/your-repository/&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;希望这篇指南能帮助你更好地开始使用 GitHub！&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
