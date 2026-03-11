@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
-<title>IST实验室第一次考核的解决方案</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 本文是 EKF 算法详解系列 的第二篇。\n上一篇：EKF 算法详解：(一) 简介与基础 | 下一篇：EKF 算法详解：(三) 源码解析实现\n在实际的机器人（如 RoboMaster）视觉和云台控制中，扩展卡尔曼滤波（EKF）经常被用于姿态解算（Attitude Estimation）。在本篇文章中，我们将结合实际项目中的四元数（Quaternion）状态，深入推导 EKF 的核心数学模型。\n">
+<title>EKF 算法详解：(二) 姿态解算与数学推导</title>
 
-<link rel='canonical' href='https://Galileo927.github.io/p/ist-first-assessment-solution/'>
+<link rel='canonical' href='https://Galileo927.github.io/p/ekf-math/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="IST实验室第一次考核的解决方案">
-<meta property='og:description' content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
-<meta property='og:url' content='https://Galileo927.github.io/p/ist-first-assessment-solution/'>
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="EKF 算法详解：(二) 姿态解算与数学推导">
+<meta property='og:description' content=" 本文是 EKF 算法详解系列 的第二篇。\n上一篇：EKF 算法详解：(一) 简介与基础 | 下一篇：EKF 算法详解：(三) 源码解析实现\n在实际的机器人（如 RoboMaster）视觉和云台控制中，扩展卡尔曼滤波（EKF）经常被用于姿态解算（Attitude Estimation）。在本篇文章中，我们将结合实际项目中的四元数（Quaternion）状态，深入推导 EKF 的核心数学模型。\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/ekf-math/'>
 <meta property='og:site_name' content='Galileo Y'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-14T16:57:30&#43;08:00'/><meta property='article:modified_time' content='2025-10-14T16:57:30&#43;08:00'/>
-<meta name="twitter:title" content="IST实验室第一次考核的解决方案">
-<meta name="twitter:description" content="IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake） 任务概要 使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='算法' /><meta property='article:tag' content='EKF' /><meta property='article:tag' content='数学推导' /><meta property='article:tag' content='四元数' /><meta property='article:tag' content='姿态解算' /><meta property='article:published_time' content='2025-11-18T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-11-18T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="EKF 算法详解：(二) 姿态解算与数学推导">
+<meta name="twitter:description" content=" 本文是 EKF 算法详解系列 的第二篇。\n上一篇：EKF 算法详解：(一) 简介与基础 | 下一篇：EKF 算法详解：(三) 源码解析实现\n在实际的机器人（如 RoboMaster）视觉和云台控制中，扩展卡尔曼滤波（EKF）经常被用于姿态解算（Attitude Estimation）。在本篇文章中，我们将结合实际项目中的四元数（Quaternion）状态，深入推导 EKF 的核心数学模型。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_e42f80f27cbb7fd3.png" width="300"
+                        <img src="/img/avatar_hu_c5ecd16ba564b335.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -261,10 +261,10 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#任务概要">任务概要</a></li>
-    <li><a href="#要求必做">要求（必做）</a></li>
-    <li><a href="#硬件与物料">硬件与物料</a></li>
-    <li><a href="#参考方案及源码">参考方案及源码</a></li>
+    <li><a href="#1-为什么使用四元数与误差状态">1. 为什么使用四元数与误差状态？</a></li>
+    <li><a href="#2-状态预测方程-prediction">2. 状态预测方程 (Prediction)</a></li>
+    <li><a href="#3-雅可比矩阵的计算-jacobian">3. 雅可比矩阵的计算 (Jacobian)</a></li>
+    <li><a href="#4-状态更新方程-update">4. 状态更新方程 (Update)</a></li>
   </ol>
 </nav>
         </div>
@@ -281,10 +281,18 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/ekf%E7%B3%BB%E5%88%97/" >
+                EKF系列
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ist-first-assessment-solution/">IST实验室第一次考核的解决方案</a>
+            <a href="/p/ekf-math/">EKF 算法详解：(二) 姿态解算与数学推导</a>
         </h2>
     
         
@@ -306,7 +314,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-10-14</time>
+                <time class="article-time--published">2025-11-18</time>
             </div>
         
 
@@ -322,36 +330,74 @@
     <section class="article-content">
     
     
-    <h1 id="ist-视觉组第一次考核--彩色物块检测c--opencv--cmake">IST 视觉组第一次考核 — 彩色物块检测（C++ / OpenCV / CMake）
-</h1><h2 id="任务概要">任务概要
-</h2><p>使用 USB 相机（实验室提供），基于 C++ + OpenCV，完成一个实时彩色物块检测程序。程序需要读取相机视频流，实时显示画面，并在画面中用方框标出检测到的彩色物块，同时显示识别出的物块颜色。</p>
-<h2 id="要求必做">要求（必做）
-</h2><ul>
-<li>开发语言：C++</li>
-<li>计算机视觉库：OpenCV（建议 4.8.0）</li>
-<li>构建系统：CMake</li>
-<li>运行环境：Ubuntu 22.04（建议在 VM 或双系统上进行）</li>
-<li>功能：实时读取 USB 相机、显示画面、检测彩色物块并用方框标出、显示颜色名称</li>
-</ul>
-<h2 id="硬件与物料">硬件与物料
-</h2><ul>
-<li>USB 相机（实验室提供）</li>
-<li>彩色物块（实验室提供）</li>
-<li>电脑（自备）</li>
-</ul>
-<p>注意：使用后及时归还实验室物品并保持卫生。</p>
-<h2 id="参考方案及源码">参考方案及源码
-</h2><p>参考方案及源码已经放入此仓库：<a class="link" href="https://github.com/Galileo927/IST_25_firsttest.git"  target="_blank" rel="noopener"
-    >IST_25_firsttest</a></p>
-<blockquote>
-<p>程序参数需要自己调整</p>
+    <blockquote>
+<p>本文是 <a class="link" href="/p/ekf-series/" >EKF 算法详解系列</a> 的第二篇。</p>
+<p>上一篇：<a class="link" href="/p/ekf-introduction/" >EKF 算法详解：(一) 简介与基础</a> | 下一篇：<a class="link" href="/p/ekf-code/" >EKF 算法详解：(三) 源码解析实现</a></p>
 </blockquote>
+<p>在实际的机器人（如 RoboMaster）视觉和云台控制中，扩展卡尔曼滤波（EKF）经常被用于<strong>姿态解算</strong>（Attitude Estimation）。在本篇文章中，我们将结合实际项目中的四元数（Quaternion）状态，深入推导 EKF 的核心数学模型。</p>
+<h2 id="1-为什么使用四元数与误差状态">1. 为什么使用四元数与误差状态？
+</h2><p>在三维空间中表示旋转，欧拉角容易遇到“万向节死锁”问题，旋转矩阵则需要维护 9 个元素且保持正交约束。<strong>四元数 (Quaternion)</strong> 只需要 4 个元素，且计算效率高，是姿态表示的最佳选择。</p>
+<p>然而，传统的 EKF 难以直接应用于四元数，因为四元数必须满足<strong>单位长度约束</strong>（\( ||q|| = 1 \)）。如果直接对四元数进行线性加减（如 \( q = q + \Delta q \)），会破坏其模长。</p>
+<p>因此，在实际工程中，我们通常采用 <strong>误差状态卡尔曼滤波（Error-State Kalman Filter, ESKF）</strong> 或称乘性 EKF（MEKF）：</p>
+<ul>
+<li><strong>名义状态 (Nominal State)</strong>：用四元数 \( q \) 表示，通过乘法进行更新：\( q_{new} = q \otimes \Delta q \)</li>
+<li><strong>误差状态 (Error State)</strong>：用一个三维向量（误差角 \( \delta \theta \)）表示，其协方差矩阵 \( P \) 为 3x3 的矩阵。</li>
+</ul>
+<h2 id="2-状态预测方程-prediction">2. 状态预测方程 (Prediction)
+</h2><p>假设我们已知当前的角速度 \( \omega \) 和角加速度 \( \alpha \)，在时间间隔 \( \Delta t \) 内，角度的变化量 \( \Delta \theta \) 可以近似表示为：
+</p>
+$$ \Delta \theta \approx (\omega + \alpha \cdot \Delta t) \Delta t $$<p>根据角度变化量 \( \Delta \theta \)，我们可以构造出一个微小旋转的四元数更新量 \( q_{update} \)。
+设 \( \theta = ||\Delta \theta|| \) 为旋转角，旋转轴 \( u = \frac{\Delta \theta}{\theta} \)：</p>
+<ul>
+<li>如果旋转角极小（如 \( \theta < 10^{-6} \)），根据泰勒展开，四元数更新量可以近似为：
+
+$$ q_{update} \approx \begin{bmatrix} 1 \\\\ 0.5 \Delta \theta_x \\\\ 0.5 \Delta \theta_y \\\\ 0.5 \Delta \theta_z \end{bmatrix} $$</li>
+<li>如果角度较大，则严格按照四元数轴角公式：
+
+$$ q_{update} = \begin{bmatrix} \cos(\frac{\theta}{2}) \\\\ u \sin(\frac{\theta}{2}) \end{bmatrix} $$</li>
+</ul>
+<p>最终预测的四元数状态为：
+</p>
+$$ \hat{q}_{k} = q_{k-1} \otimes q_{update} $$<h2 id="3-雅可比矩阵的计算-jacobian">3. 雅可比矩阵的计算 (Jacobian)
+</h2><p>在误差状态模型中，我们需要计算误差状态相对于角速度和旋转的雅可比矩阵 \( J \)（部分实现中作为观测矩阵或状态转移矩阵的近似）。</p>
+<p>定义角速度 \( \omega \) 的反对称矩阵（Skew-symmetric matrix）为 \( [\omega]_\times \)：
+</p>
+$$ [\omega]_\times = \begin{bmatrix} 0 & -\omega_z & \omega_y \\\\ \omega_z & 0 & -\omega_x \\\\ -\omega_y & \omega_x & 0 \end{bmatrix} $$<p>一阶近似下，误差状态转移的雅可比矩阵可以表示为：
+</p>
+$$ J = I_{3\times3} + \frac{1}{2} \Delta t [\omega]_\times $$<h2 id="4-状态更新方程-update">4. 状态更新方程 (Update)
+</h2><p>当新的测量值（例如视觉 PnP 解算得到的四元数测量值 \( q_{meas} \)）到来时，我们需要计算预测值 \( \hat{q}_k \) 与测量值的<strong>残差（Residual）</strong>：
+</p>
+$$ q_{res} = q_{meas} \otimes \hat{q}_k^{-1} $$<p>
+我们提取这个残差四元数的虚部向量部分 \( z_{res} = [q_{res}.x, q_{res}.y, q_{res}.z]^T \) 作为测量残差向量。</p>
+<p>接着，计算卡尔曼增益 \( K \)。假设我们提取的雅可比矩阵为 \( J \)，系统误差协方差为 \( P \)，测量噪声协方差为 \( R \)：
+</p>
+$$ K = P J^T (J P J^T + R)^{-1} $$<p>随后将增益乘上残差，得到误差角度修正量：
+</p>
+$$ K_z = K \cdot z_{res} $$<p>最后，利用这个三维修正量构造误差四元数，乘到预测状态上，并更新协方差矩阵 \( P \)：
+</p>
+$$ q_{new} = \hat{q}_k \otimes \begin{bmatrix} 1 \\\\ K_z.x \\\\ K_z.y \\\\ K_z.z \end{bmatrix} $$<p>
+</p>
+$$ P_{new} = (I_{3\times3} - K J) P $$<p>以上就是一套完整用于姿态跟踪的轻量级 EKF/ESKF 数学推导模型。在下一篇文章中，我们将直接拆解 C++ 落地代码，看看这些公式是如何变成实际运行的程序的！</p>
 
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+        
+            <a href="/tags/ekf/">EKF</a>
+        
+            <a href="/tags/%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/">数学推导</a>
+        
+            <a href="/tags/%E5%9B%9B%E5%85%83%E6%95%B0/">四元数</a>
+        
+            <a href="/tags/%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97/">姿态解算</a>
+        
+    </section>
+
 
     </footer>
 
@@ -388,6 +434,41 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/ekf-code/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">EKF 算法详解：(三) 源码解析实现</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ekf-introduction/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">EKF 算法详解：(一) 简介与基础</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -440,7 +521,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 Example Person
+            2025 - 
+        
+        2026 Example Person
     </section>
     
     <section class="powerby">

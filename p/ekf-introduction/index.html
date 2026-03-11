@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="这是 EKF 算法详解系列的第一篇文章。在本章中，我们将介绍扩展卡尔曼滤波器的基本概念和数学基础。\n本文是 EKF 算法详解系列 的第一篇。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 本文是 EKF 算法详解系列 的第一篇。\n下一篇：EKF 算法详解：(二) 姿态解算与数学推导\n在机器人、自动驾驶、无人机等领域中，“状态估计”是一个绕不开的核心问题。无论是云台的姿态解算，还是车辆的轨迹跟踪，我们都希望知道系统在当前时刻的准确状态。而在众多状态估计算法中，扩展卡尔曼滤波（Extended Kalman Filter, 简称 EKF） 无疑是最经典、应用最广泛的算法之一。\n">
 <title>EKF 算法详解：(一) 简介与基础</title>
 
 <link rel='canonical' href='https://Galileo927.github.io/p/ekf-introduction/'>
 
 <link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="EKF 算法详解：(一) 简介与基础">
-<meta property='og:description' content="这是 EKF 算法详解系列的第一篇文章。在本章中，我们将介绍扩展卡尔曼滤波器的基本概念和数学基础。\n本文是 EKF 算法详解系列 的第一篇。\n">
+<meta property='og:description' content=" 本文是 EKF 算法详解系列 的第一篇。\n下一篇：EKF 算法详解：(二) 姿态解算与数学推导\n在机器人、自动驾驶、无人机等领域中，“状态估计”是一个绕不开的核心问题。无论是云台的姿态解算，还是车辆的轨迹跟踪，我们都希望知道系统在当前时刻的准确状态。而在众多状态估计算法中，扩展卡尔曼滤波（Extended Kalman Filter, 简称 EKF） 无疑是最经典、应用最广泛的算法之一。\n">
 <meta property='og:url' content='https://Galileo927.github.io/p/ekf-introduction/'>
 <meta property='og:site_name' content='Galileo Y'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='算法' /><meta property='article:tag' content='EKF' /><meta property='article:tag' content='卡尔曼滤波' /><meta property='article:published_time' content='2025-11-17T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-11-17T00:00:00&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='算法' /><meta property='article:tag' content='EKF' /><meta property='article:tag' content='卡尔曼滤波' /><meta property='article:tag' content='状态估计' /><meta property='article:published_time' content='2025-11-17T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-11-17T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="EKF 算法详解：(一) 简介与基础">
-<meta name="twitter:description" content="这是 EKF 算法详解系列的第一篇文章。在本章中，我们将介绍扩展卡尔曼滤波器的基本概念和数学基础。\n本文是 EKF 算法详解系列 的第一篇。\n">
+<meta name="twitter:description" content=" 本文是 EKF 算法详解系列 的第一篇。\n下一篇：EKF 算法详解：(二) 姿态解算与数学推导\n在机器人、自动驾驶、无人机等领域中，“状态估计”是一个绕不开的核心问题。无论是云台的姿态解算，还是车辆的轨迹跟踪，我们都希望知道系统在当前时刻的准确状态。而在众多状态估计算法中，扩展卡尔曼滤波（Extended Kalman Filter, 简称 EKF） 无疑是最经典、应用最广泛的算法之一。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_e42f80f27cbb7fd3.png" width="300"
+                        <img src="/img/avatar_hu_c5ecd16ba564b335.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -239,13 +239,68 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-什么是卡尔曼滤波-kalman-filter">1. 什么是卡尔曼滤波 (Kalman Filter)?</a>
+      <ol>
+        <li><a href="#标准-kf-的局限性">标准 KF 的局限性</a></li>
+      </ol>
+    </li>
+    <li><a href="#2-为什么需要扩展卡尔曼滤波-ekf">2. 为什么需要扩展卡尔曼滤波 (EKF)?</a>
+      <ol>
+        <li><a href="#ekf-的优势">EKF 的优势：</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-ekf-算法的通用五步公式">3. EKF 算法的通用五步公式</a>
+      <ol>
+        <li><a href="#预测阶段-predict">预测阶段 (Predict)</a></li>
+        <li><a href="#更新阶段-update">更新阶段 (Update)</a></li>
+      </ol>
+    </li>
+    <li><a href="#4-结语与预告">4. 结语与预告</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
     <header class="article-header">
 
     <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ekf%E7%B3%BB%E5%88%97/" >
+                EKF系列
+            </a>
+        
+    </header>
     
 
     <div class="article-title-wrapper">
@@ -288,10 +343,64 @@
     <section class="article-content">
     
     
-    <p>这是 EKF 算法详解系列的第一篇文章。在本章中，我们将介绍扩展卡尔曼滤波器的基本概念和数学基础。</p>
-<blockquote>
+    <blockquote>
 <p>本文是 <a class="link" href="/p/ekf-series/" >EKF 算法详解系列</a> 的第一篇。</p>
+<p>下一篇：<a class="link" href="/p/ekf-math/" >EKF 算法详解：(二) 姿态解算与数学推导</a></p>
 </blockquote>
+<p>在机器人、自动驾驶、无人机等领域中，“状态估计”是一个绕不开的核心问题。无论是云台的姿态解算，还是车辆的轨迹跟踪，我们都希望知道系统在当前时刻的准确状态。而在众多状态估计算法中，<strong>扩展卡尔曼滤波（Extended Kalman Filter, 简称 EKF）</strong> 无疑是最经典、应用最广泛的算法之一。</p>
+<p>本系列文章将带你从零开始，理解 EKF 算法。本文为第一篇，主要介绍 EKF 的基本概念、它与标准卡尔曼滤波的区别，以及它的核心思想。</p>
+<hr>
+<h2 id="1-什么是卡尔曼滤波-kalman-filter">1. 什么是卡尔曼滤波 (Kalman Filter)?
+</h2><p>在介绍 EKF 之前，我们需要先简单回顾一下<strong>标准卡尔曼滤波 (KF)</strong>。</p>
+<p>在现实世界中，任何传感器都有噪声（误差），任何物理模型也都无法做到 100% 完美预测。卡尔曼滤波的本质，就是<strong>融合“系统模型的预测”与“传感器的实际测量”</strong>，通过数学推导，找出一个在统计意义上“最靠谱”的最优估计值。</p>
+<p>卡尔曼滤波主要分为两个不断循环的步骤：</p>
+<ol>
+<li><strong>预测 (Predict)</strong>：根据上一时刻的状态和物理模型（如运动学方程：位移 = 速度 × 时间），推算出当前时刻的“先验状态”。</li>
+<li><strong>更新 (Update)</strong>：读取传感器的测量值，计算测量值与预测值之间的差异（残差），然后通过“卡尔曼增益”来动态决定是更相信模型预测，还是更相信传感器测量，最终得到当前时刻的“后验状态”。</li>
+</ol>
+<h3 id="标准-kf-的局限性">标准 KF 的局限性
+</h3><p>标准卡尔曼滤波有一个致命的假设前提：<strong>系统必须是线性的</strong>。也就是说，状态的转移和观测过程都必须能用线性矩阵相乘来表示。
+但在真实世界里，比如角度的旋转涉及正弦/余弦运算（如欧拉角、四元数），或者是复杂的阻力模型，这些都是<strong>非线性</strong>的。这时候，标准 KF 就会失效。</p>
+<hr>
+<h2 id="2-为什么需要扩展卡尔曼滤波-ekf">2. 为什么需要扩展卡尔曼滤波 (EKF)?
+</h2><p>既然现实系统大多是非线性的，我们就需要对标准卡尔曼滤波进行“扩展”——这就是 <strong>EKF</strong> 诞生的原因。</p>
+<p>EKF 的核心思想非常简单粗暴但又极其有效：<strong>既然系统是非线性的，那就在当前工作点附近把它“局部线性化”</strong>。</p>
+<p>具体来说，EKF 利用了高等数学中的<strong>泰勒展开（Taylor Expansion）</strong>。它将非线性的状态转移函数和观测函数在当前的最优估计值处进行一阶泰勒展开，忽略掉高阶项。这样一来，复杂的非线性函数就被近似成了一个线性模型（即求导数，得到<strong>雅可比矩阵 Jacobian</strong>）。</p>
+<h3 id="ekf-的优势">EKF 的优势：
+</h3><ul>
+<li><strong>适用性广</strong>：完美解决了非线性系统的状态估计问题（例如机器人的视觉位姿追踪）。</li>
+<li><strong>计算效率高</strong>：相比于粒子滤波（PF）或无迹卡尔曼滤波（UKF），EKF 只需要计算一阶雅可比矩阵，计算量较小，非常适合部署在算力受限的嵌入式设备（如各类单片机、STM32 等）上。</li>
+</ul>
+<hr>
+<h2 id="3-ekf-算法的通用五步公式">3. EKF 算法的通用五步公式
+</h2><p>一个标准的 EKF 同样遵循“预测”和“更新”两大阶段，具体的数学公式通常被归纳为以下经典的五步：</p>
+<h3 id="预测阶段-predict">预测阶段 (Predict)
+</h3><ol>
+<li><strong>状态预测</strong>：根据非线性运动方程推算先验状态。
+
+$$ \hat{x}_k^- = f(\hat{x}_{k-1}, u_{k-1}) $$</li>
+<li><strong>协方差预测</strong>：通过状态转移的雅可比矩阵 \( F \)，更新预测误差协方差矩阵。
+
+$$ P_k^- = F P_{k-1} F^T + Q $$</li>
+</ol>
+<h3 id="更新阶段-update">更新阶段 (Update)
+</h3><ol start="3">
+<li><strong>计算卡尔曼增益</strong>：利用观测模型的雅可比矩阵 \( H \) 计算增益 \( K \)。
+
+$$ K_k = P_k^- H^T (H P_k^- H^T + R)^{-1} $$</li>
+<li><strong>状态更新</strong>：根据传感器实际测量值 \( z_k \) 与预测值的残差，修正状态，得到后验最优估计。
+
+$$ \hat{x}_k = \hat{x}_k^- + K_k (z_k - h(\hat{x}_k^-)) $$</li>
+<li><strong>协方差更新</strong>：降低不确定度，更新协方差矩阵供下一轮使用。
+
+$$ P_k = (I - K_k H) P_k^- $$</li>
+</ol>
+<p><em>(注：这里的 \( Q \) 是过程噪声协方差，\( R \) 是测量噪声协方差，它们通常在实际工程中作为“超参数”根据经验进行调参。)</em></p>
+<hr>
+<h2 id="4-结语与预告">4. 结语与预告
+</h2><p>EKF 虽然在数学表达上看起来有些劝退，但只要理解了它**“线性化”<strong>与</strong>“加权融合”**的核心思想，就能在工程中游刃有余。</p>
+<p>在许多实际开源项目（如 RoboMaster 的视觉算法）中，EKF 常被用于追踪装甲板的运动或云台的姿态。在处理三维空间的旋转时，我们为了避免“万向节死锁”和保持约束，通常会引入<strong>四元数</strong>与<strong>误差状态 (Error-State)</strong>。</p>
+<p>在下一篇文章中，我们将直接进入硬核部分：结合机器人的视觉姿态解算场景，详细推导<strong>基于四元数和误差状态的 EKF 数学模型</strong>！</p>
 
 </section>
 
@@ -305,6 +414,8 @@
             <a href="/tags/ekf/">EKF</a>
         
             <a href="/tags/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/">卡尔曼滤波</a>
+        
+            <a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/">状态估计</a>
         
     </section>
 
@@ -344,6 +455,41 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/ekf-code/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">EKF 算法详解：(三) 源码解析实现</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ekf-math/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">EKF 算法详解：(二) 姿态解算与数学推导</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -396,7 +542,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 Example Person
+            2025 - 
+        
+        2026 Example Person
     </section>
     
     <section class="powerby">

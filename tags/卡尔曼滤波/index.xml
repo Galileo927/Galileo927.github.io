@@ -5,7 +5,7 @@
         <link>https://Galileo927.github.io/tags/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/</link>
         <description>Recent content in 卡尔曼滤波 on Galileo Y</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>Example Person</copyright>
         <lastBuildDate>Mon, 17 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>EKF 算法详解：(一) 简介与基础</title>
@@ -13,10 +13,64 @@
         <pubDate>Mon, 17 Nov 2025 00:00:00 +0800</pubDate>
         
         <guid>https://Galileo927.github.io/p/ekf-introduction/</guid>
-        <description>&lt;p&gt;这是 EKF 算法详解系列的第一篇文章。在本章中，我们将介绍扩展卡尔曼滤波器的基本概念和数学基础。&lt;/p&gt;
-&lt;blockquote&gt;
+        <description>&lt;blockquote&gt;
 &lt;p&gt;本文是 &lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-series/&#34; &gt;EKF 算法详解系列&lt;/a&gt; 的第一篇。&lt;/p&gt;
+&lt;p&gt;下一篇：&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-math/&#34; &gt;EKF 算法详解：(二) 姿态解算与数学推导&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;在机器人、自动驾驶、无人机等领域中，“状态估计”是一个绕不开的核心问题。无论是云台的姿态解算，还是车辆的轨迹跟踪，我们都希望知道系统在当前时刻的准确状态。而在众多状态估计算法中，&lt;strong&gt;扩展卡尔曼滤波（Extended Kalman Filter, 简称 EKF）&lt;/strong&gt; 无疑是最经典、应用最广泛的算法之一。&lt;/p&gt;
+&lt;p&gt;本系列文章将带你从零开始，理解 EKF 算法。本文为第一篇，主要介绍 EKF 的基本概念、它与标准卡尔曼滤波的区别，以及它的核心思想。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-什么是卡尔曼滤波-kalman-filter&#34;&gt;1. 什么是卡尔曼滤波 (Kalman Filter)?
+&lt;/h2&gt;&lt;p&gt;在介绍 EKF 之前，我们需要先简单回顾一下&lt;strong&gt;标准卡尔曼滤波 (KF)&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在现实世界中，任何传感器都有噪声（误差），任何物理模型也都无法做到 100% 完美预测。卡尔曼滤波的本质，就是&lt;strong&gt;融合“系统模型的预测”与“传感器的实际测量”&lt;/strong&gt;，通过数学推导，找出一个在统计意义上“最靠谱”的最优估计值。&lt;/p&gt;
+&lt;p&gt;卡尔曼滤波主要分为两个不断循环的步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;预测 (Predict)&lt;/strong&gt;：根据上一时刻的状态和物理模型（如运动学方程：位移 = 速度 × 时间），推算出当前时刻的“先验状态”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;更新 (Update)&lt;/strong&gt;：读取传感器的测量值，计算测量值与预测值之间的差异（残差），然后通过“卡尔曼增益”来动态决定是更相信模型预测，还是更相信传感器测量，最终得到当前时刻的“后验状态”。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;标准-kf-的局限性&#34;&gt;标准 KF 的局限性
+&lt;/h3&gt;&lt;p&gt;标准卡尔曼滤波有一个致命的假设前提：&lt;strong&gt;系统必须是线性的&lt;/strong&gt;。也就是说，状态的转移和观测过程都必须能用线性矩阵相乘来表示。
+但在真实世界里，比如角度的旋转涉及正弦/余弦运算（如欧拉角、四元数），或者是复杂的阻力模型，这些都是&lt;strong&gt;非线性&lt;/strong&gt;的。这时候，标准 KF 就会失效。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-为什么需要扩展卡尔曼滤波-ekf&#34;&gt;2. 为什么需要扩展卡尔曼滤波 (EKF)?
+&lt;/h2&gt;&lt;p&gt;既然现实系统大多是非线性的，我们就需要对标准卡尔曼滤波进行“扩展”——这就是 &lt;strong&gt;EKF&lt;/strong&gt; 诞生的原因。&lt;/p&gt;
+&lt;p&gt;EKF 的核心思想非常简单粗暴但又极其有效：&lt;strong&gt;既然系统是非线性的，那就在当前工作点附近把它“局部线性化”&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;具体来说，EKF 利用了高等数学中的&lt;strong&gt;泰勒展开（Taylor Expansion）&lt;/strong&gt;。它将非线性的状态转移函数和观测函数在当前的最优估计值处进行一阶泰勒展开，忽略掉高阶项。这样一来，复杂的非线性函数就被近似成了一个线性模型（即求导数，得到&lt;strong&gt;雅可比矩阵 Jacobian&lt;/strong&gt;）。&lt;/p&gt;
+&lt;h3 id=&#34;ekf-的优势&#34;&gt;EKF 的优势：
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;适用性广&lt;/strong&gt;：完美解决了非线性系统的状态估计问题（例如机器人的视觉位姿追踪）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计算效率高&lt;/strong&gt;：相比于粒子滤波（PF）或无迹卡尔曼滤波（UKF），EKF 只需要计算一阶雅可比矩阵，计算量较小，非常适合部署在算力受限的嵌入式设备（如各类单片机、STM32 等）上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-ekf-算法的通用五步公式&#34;&gt;3. EKF 算法的通用五步公式
+&lt;/h2&gt;&lt;p&gt;一个标准的 EKF 同样遵循“预测”和“更新”两大阶段，具体的数学公式通常被归纳为以下经典的五步：&lt;/p&gt;
+&lt;h3 id=&#34;预测阶段-predict&#34;&gt;预测阶段 (Predict)
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;状态预测&lt;/strong&gt;：根据非线性运动方程推算先验状态。
+
+$$ \hat{x}_k^- = f(\hat{x}_{k-1}, u_{k-1}) $$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;协方差预测&lt;/strong&gt;：通过状态转移的雅可比矩阵 \( F \)，更新预测误差协方差矩阵。
+
+$$ P_k^- = F P_{k-1} F^T + Q $$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;更新阶段-update&#34;&gt;更新阶段 (Update)
+&lt;/h3&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;计算卡尔曼增益&lt;/strong&gt;：利用观测模型的雅可比矩阵 \( H \) 计算增益 \( K \)。
+
+$$ K_k = P_k^- H^T (H P_k^- H^T + R)^{-1} $$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态更新&lt;/strong&gt;：根据传感器实际测量值 \( z_k \) 与预测值的残差，修正状态，得到后验最优估计。
+
+$$ \hat{x}_k = \hat{x}_k^- + K_k (z_k - h(\hat{x}_k^-)) $$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;协方差更新&lt;/strong&gt;：降低不确定度，更新协方差矩阵供下一轮使用。
+
+$$ P_k = (I - K_k H) P_k^- $$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;(注：这里的 \( Q \) 是过程噪声协方差，\( R \) 是测量噪声协方差，它们通常在实际工程中作为“超参数”根据经验进行调参。)&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-结语与预告&#34;&gt;4. 结语与预告
+&lt;/h2&gt;&lt;p&gt;EKF 虽然在数学表达上看起来有些劝退，但只要理解了它**“线性化”&lt;strong&gt;与&lt;/strong&gt;“加权融合”**的核心思想，就能在工程中游刃有余。&lt;/p&gt;
+&lt;p&gt;在许多实际开源项目（如 RoboMaster 的视觉算法）中，EKF 常被用于追踪装甲板的运动或云台的姿态。在处理三维空间的旋转时，我们为了避免“万向节死锁”和保持约束，通常会引入&lt;strong&gt;四元数&lt;/strong&gt;与&lt;strong&gt;误差状态 (Error-State)&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在下一篇文章中，我们将直接进入硬核部分：结合机器人的视觉姿态解算场景，详细推导&lt;strong&gt;基于四元数和误差状态的 EKF 数学模型&lt;/strong&gt;！&lt;/p&gt;
 </description>
         </item>
         
