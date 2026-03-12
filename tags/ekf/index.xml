@@ -7,10 +7,66 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Wed, 19 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/ekf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Mar 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/ekf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>EKF 算法详解：(二) 姿态解算与数学推导</title>
+        <link>https://Galileo927.github.io/p/ekf-math/</link>
+        <pubDate>Thu, 12 Mar 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/p/ekf-math/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;本文是 &lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-series/&#34; &gt;EKF 算法详解系列&lt;/a&gt; 的第二篇。&lt;/p&gt;
+&lt;p&gt;上一篇：&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-introduction/&#34; &gt;EKF 算法详解：(一) 简介与基础&lt;/a&gt; | 下一篇：&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-code/&#34; &gt;EKF 算法详解：(三) 源码解析实现&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在实际的机器人（如 RoboMaster）视觉和云台控制中，扩展卡尔曼滤波（EKF）经常被用于&lt;strong&gt;姿态解算&lt;/strong&gt;（Attitude Estimation）。在本篇文章中，我们将结合实际项目中的四元数（Quaternion）状态，深入推导 EKF 的核心数学模型。&lt;/p&gt;
+&lt;h2 id=&#34;1-为什么使用四元数与误差状态&#34;&gt;1. 为什么使用四元数与误差状态？
+&lt;/h2&gt;&lt;p&gt;在三维空间中表示旋转，欧拉角容易遇到“万向节死锁”问题，旋转矩阵则需要维护 9 个元素且保持正交约束。&lt;strong&gt;四元数 (Quaternion)&lt;/strong&gt; 只需要 4 个元素，且计算效率高，是姿态表示的最佳选择。&lt;/p&gt;
+&lt;p&gt;然而，传统的 EKF 难以直接应用于四元数，因为四元数必须满足&lt;strong&gt;单位长度约束&lt;/strong&gt;（\( ||q|| = 1 \)）。如果直接对四元数进行线性加减（如 \( q = q + \Delta q \)），会破坏其模长。&lt;/p&gt;
+&lt;p&gt;因此，在实际工程中，我们通常采用 &lt;strong&gt;误差状态卡尔曼滤波（Error-State Kalman Filter, ESKF）&lt;/strong&gt; 或称乘性 EKF（MEKF）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;名义状态 (Nominal State)&lt;/strong&gt;：用四元数 \( q \) 表示，通过乘法进行更新：\( q_{new} = q \otimes \Delta q \)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;误差状态 (Error State)&lt;/strong&gt;：用一个三维向量（误差角 \( \delta \theta \)）表示，其协方差矩阵 \( P \) 为 3x3 的矩阵。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-状态预测方程-prediction&#34;&gt;2. 状态预测方程 (Prediction)
+&lt;/h2&gt;&lt;p&gt;假设我们已知当前的角速度 \( \omega \) 和角加速度 \( \alpha \)，在时间间隔 \( \Delta t \) 内，角度的变化量 \( \Delta \theta \) 可以近似表示为：
+&lt;/p&gt;
+$$ \Delta \theta \approx (\omega + \alpha \cdot \Delta t) \Delta t $$&lt;p&gt;根据角度变化量 \( \Delta \theta \)，我们可以构造出一个微小旋转的四元数更新量 \( q_{update} \)。
+设 \( \theta = ||\Delta \theta|| \) 为旋转角，旋转轴 \( u = \frac{\Delta \theta}{\theta} \)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果旋转角极小（如 \( \theta &lt; 10^{-6} \)），根据泰勒展开，四元数更新量可以近似为：
+
+$$ q_{update} \approx \begin{bmatrix} 1 \\\\ 0.5 \Delta \theta_x \\\\ 0.5 \Delta \theta_y \\\\ 0.5 \Delta \theta_z \end{bmatrix} $$&lt;/li&gt;
+&lt;li&gt;如果角度较大，则严格按照四元数轴角公式：
+
+$$ q_{update} = \begin{bmatrix} \cos(\frac{\theta}{2}) \\\\ u \sin(\frac{\theta}{2}) \end{bmatrix} $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最终预测的四元数状态为：
+&lt;/p&gt;
+$$ \hat{q}_{k} = q_{k-1} \otimes q_{update} $$&lt;h2 id=&#34;3-雅可比矩阵的计算-jacobian&#34;&gt;3. 雅可比矩阵的计算 (Jacobian)
+&lt;/h2&gt;&lt;p&gt;在误差状态模型中，我们需要计算误差状态相对于角速度和旋转的雅可比矩阵 \( J \)（部分实现中作为观测矩阵或状态转移矩阵的近似）。&lt;/p&gt;
+&lt;p&gt;定义角速度 \( \omega \) 的反对称矩阵（Skew-symmetric matrix）为 \( [\omega]_\times \)：
+&lt;/p&gt;
+$$ [\omega]_\times = \begin{bmatrix} 0 &amp; -\omega_z &amp; \omega_y \\\\ \omega_z &amp; 0 &amp; -\omega_x \\\\ -\omega_y &amp; \omega_x &amp; 0 \end{bmatrix} $$&lt;p&gt;一阶近似下，误差状态转移的雅可比矩阵可以表示为：
+&lt;/p&gt;
+$$ J = I_{3\times3} + \frac{1}{2} \Delta t [\omega]_\times $$&lt;h2 id=&#34;4-状态更新方程-update&#34;&gt;4. 状态更新方程 (Update)
+&lt;/h2&gt;&lt;p&gt;当新的测量值（例如视觉 PnP 解算得到的四元数测量值 \( q_{meas} \)）到来时，我们需要计算预测值 \( \hat{q}_k \) 与测量值的&lt;strong&gt;残差（Residual）&lt;/strong&gt;：
+&lt;/p&gt;
+$$ q_{res} = q_{meas} \otimes \hat{q}_k^{-1} $$&lt;p&gt;
+我们提取这个残差四元数的虚部向量部分 \( z_{res} = [q_{res}.x, q_{res}.y, q_{res}.z]^T \) 作为测量残差向量。&lt;/p&gt;
+&lt;p&gt;接着，计算卡尔曼增益 \( K \)。假设我们提取的雅可比矩阵为 \( J \)，系统误差协方差为 \( P \)，测量噪声协方差为 \( R \)：
+&lt;/p&gt;
+$$ K = P J^T (J P J^T + R)^{-1} $$&lt;p&gt;随后将增益乘上残差，得到误差角度修正量：
+&lt;/p&gt;
+$$ K_z = K \cdot z_{res} $$&lt;p&gt;最后，利用这个三维修正量构造误差四元数，乘到预测状态上，并更新协方差矩阵 \( P \)：
+&lt;/p&gt;
+$$ q_{new} = \hat{q}_k \otimes \begin{bmatrix} 1 \\\\ K_z.x \\\\ K_z.y \\\\ K_z.z \end{bmatrix} $$&lt;p&gt;
+&lt;/p&gt;
+$$ P_{new} = (I_{3\times3} - K J) P $$&lt;p&gt;以上就是一套完整用于姿态跟踪的轻量级 EKF/ESKF 数学推导模型。在下一篇文章中，我们将直接拆解 C++ 落地代码，看看这些公式是如何变成实际运行的程序的！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>EKF 算法详解：(三) 源码解析实现</title>
         <link>https://Galileo927.github.io/p/ekf-code/</link>
-        <pubDate>Wed, 19 Nov 2025 00:00:00 +0800</pubDate>
+        <pubDate>Thu, 12 Mar 2026 00:00:00 +0800</pubDate>
         
         <guid>https://Galileo927.github.io/p/ekf-code/</guid>
         <description>&lt;blockquote&gt;
@@ -245,65 +301,9 @@
 </description>
         </item>
         <item>
-        <title>EKF 算法详解：(二) 姿态解算与数学推导</title>
-        <link>https://Galileo927.github.io/p/ekf-math/</link>
-        <pubDate>Tue, 18 Nov 2025 00:00:00 +0800</pubDate>
-        
-        <guid>https://Galileo927.github.io/p/ekf-math/</guid>
-        <description>&lt;blockquote&gt;
-&lt;p&gt;本文是 &lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-series/&#34; &gt;EKF 算法详解系列&lt;/a&gt; 的第二篇。&lt;/p&gt;
-&lt;p&gt;上一篇：&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-introduction/&#34; &gt;EKF 算法详解：(一) 简介与基础&lt;/a&gt; | 下一篇：&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-code/&#34; &gt;EKF 算法详解：(三) 源码解析实现&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;在实际的机器人（如 RoboMaster）视觉和云台控制中，扩展卡尔曼滤波（EKF）经常被用于&lt;strong&gt;姿态解算&lt;/strong&gt;（Attitude Estimation）。在本篇文章中，我们将结合实际项目中的四元数（Quaternion）状态，深入推导 EKF 的核心数学模型。&lt;/p&gt;
-&lt;h2 id=&#34;1-为什么使用四元数与误差状态&#34;&gt;1. 为什么使用四元数与误差状态？
-&lt;/h2&gt;&lt;p&gt;在三维空间中表示旋转，欧拉角容易遇到“万向节死锁”问题，旋转矩阵则需要维护 9 个元素且保持正交约束。&lt;strong&gt;四元数 (Quaternion)&lt;/strong&gt; 只需要 4 个元素，且计算效率高，是姿态表示的最佳选择。&lt;/p&gt;
-&lt;p&gt;然而，传统的 EKF 难以直接应用于四元数，因为四元数必须满足&lt;strong&gt;单位长度约束&lt;/strong&gt;（\( ||q|| = 1 \)）。如果直接对四元数进行线性加减（如 \( q = q + \Delta q \)），会破坏其模长。&lt;/p&gt;
-&lt;p&gt;因此，在实际工程中，我们通常采用 &lt;strong&gt;误差状态卡尔曼滤波（Error-State Kalman Filter, ESKF）&lt;/strong&gt; 或称乘性 EKF（MEKF）：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;名义状态 (Nominal State)&lt;/strong&gt;：用四元数 \( q \) 表示，通过乘法进行更新：\( q_{new} = q \otimes \Delta q \)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;误差状态 (Error State)&lt;/strong&gt;：用一个三维向量（误差角 \( \delta \theta \)）表示，其协方差矩阵 \( P \) 为 3x3 的矩阵。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;2-状态预测方程-prediction&#34;&gt;2. 状态预测方程 (Prediction)
-&lt;/h2&gt;&lt;p&gt;假设我们已知当前的角速度 \( \omega \) 和角加速度 \( \alpha \)，在时间间隔 \( \Delta t \) 内，角度的变化量 \( \Delta \theta \) 可以近似表示为：
-&lt;/p&gt;
-$$ \Delta \theta \approx (\omega + \alpha \cdot \Delta t) \Delta t $$&lt;p&gt;根据角度变化量 \( \Delta \theta \)，我们可以构造出一个微小旋转的四元数更新量 \( q_{update} \)。
-设 \( \theta = ||\Delta \theta|| \) 为旋转角，旋转轴 \( u = \frac{\Delta \theta}{\theta} \)：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果旋转角极小（如 \( \theta &lt; 10^{-6} \)），根据泰勒展开，四元数更新量可以近似为：
-
-$$ q_{update} \approx \begin{bmatrix} 1 \\\\ 0.5 \Delta \theta_x \\\\ 0.5 \Delta \theta_y \\\\ 0.5 \Delta \theta_z \end{bmatrix} $$&lt;/li&gt;
-&lt;li&gt;如果角度较大，则严格按照四元数轴角公式：
-
-$$ q_{update} = \begin{bmatrix} \cos(\frac{\theta}{2}) \\\\ u \sin(\frac{\theta}{2}) \end{bmatrix} $$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;最终预测的四元数状态为：
-&lt;/p&gt;
-$$ \hat{q}_{k} = q_{k-1} \otimes q_{update} $$&lt;h2 id=&#34;3-雅可比矩阵的计算-jacobian&#34;&gt;3. 雅可比矩阵的计算 (Jacobian)
-&lt;/h2&gt;&lt;p&gt;在误差状态模型中，我们需要计算误差状态相对于角速度和旋转的雅可比矩阵 \( J \)（部分实现中作为观测矩阵或状态转移矩阵的近似）。&lt;/p&gt;
-&lt;p&gt;定义角速度 \( \omega \) 的反对称矩阵（Skew-symmetric matrix）为 \( [\omega]_\times \)：
-&lt;/p&gt;
-$$ [\omega]_\times = \begin{bmatrix} 0 &amp; -\omega_z &amp; \omega_y \\\\ \omega_z &amp; 0 &amp; -\omega_x \\\\ -\omega_y &amp; \omega_x &amp; 0 \end{bmatrix} $$&lt;p&gt;一阶近似下，误差状态转移的雅可比矩阵可以表示为：
-&lt;/p&gt;
-$$ J = I_{3\times3} + \frac{1}{2} \Delta t [\omega]_\times $$&lt;h2 id=&#34;4-状态更新方程-update&#34;&gt;4. 状态更新方程 (Update)
-&lt;/h2&gt;&lt;p&gt;当新的测量值（例如视觉 PnP 解算得到的四元数测量值 \( q_{meas} \)）到来时，我们需要计算预测值 \( \hat{q}_k \) 与测量值的&lt;strong&gt;残差（Residual）&lt;/strong&gt;：
-&lt;/p&gt;
-$$ q_{res} = q_{meas} \otimes \hat{q}_k^{-1} $$&lt;p&gt;
-我们提取这个残差四元数的虚部向量部分 \( z_{res} = [q_{res}.x, q_{res}.y, q_{res}.z]^T \) 作为测量残差向量。&lt;/p&gt;
-&lt;p&gt;接着，计算卡尔曼增益 \( K \)。假设我们提取的雅可比矩阵为 \( J \)，系统误差协方差为 \( P \)，测量噪声协方差为 \( R \)：
-&lt;/p&gt;
-$$ K = P J^T (J P J^T + R)^{-1} $$&lt;p&gt;随后将增益乘上残差，得到误差角度修正量：
-&lt;/p&gt;
-$$ K_z = K \cdot z_{res} $$&lt;p&gt;最后，利用这个三维修正量构造误差四元数，乘到预测状态上，并更新协方差矩阵 \( P \)：
-&lt;/p&gt;
-$$ q_{new} = \hat{q}_k \otimes \begin{bmatrix} 1 \\\\ K_z.x \\\\ K_z.y \\\\ K_z.z \end{bmatrix} $$&lt;p&gt;
-&lt;/p&gt;
-$$ P_{new} = (I_{3\times3} - K J) P $$&lt;p&gt;以上就是一套完整用于姿态跟踪的轻量级 EKF/ESKF 数学推导模型。在下一篇文章中，我们将直接拆解 C++ 落地代码，看看这些公式是如何变成实际运行的程序的！&lt;/p&gt;
-</description>
-        </item>
-        <item>
         <title>EKF 算法详解：(一) 简介与基础</title>
         <link>https://Galileo927.github.io/p/ekf-introduction/</link>
-        <pubDate>Mon, 17 Nov 2025 00:00:00 +0800</pubDate>
+        <pubDate>Thu, 12 Mar 2026 00:00:00 +0800</pubDate>
         
         <guid>https://Galileo927.github.io/p/ekf-introduction/</guid>
         <description>&lt;blockquote&gt;
