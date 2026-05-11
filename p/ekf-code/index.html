@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://Galileo927.github.io/p/ekf-code/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="EKF 算法详解：(三) 源码解析实现">
+<link rel="stylesheet" href="/scss/style.min.e49b891554ac6c5eb2c3069e8725dec41e3063f5aca2317e156cb88d175c523c.css"><meta property='og:title' content="EKF 算法详解：(三) 源码解析实现">
 <meta property='og:description' content=" 本文是 EKF 算法详解系列 的第三篇。\n上一篇：EKF 算法详解：(二) 姿态解算与数学推导\n在上一篇文章中，我们详细推导了基于四元数和误差状态的 EKF 数学模型。理论推导无论多么完美，最终都需要落地成代码。本文我们将结合一个实际项目的源码（基于 C++ 和 Eigen 库），带你一行行看懂 EKF 的实现细节。\n">
 <meta property='og:url' content='https://Galileo927.github.io/p/ekf-code/'>
 <meta property='og:site_name' content='Galileo Y'>
@@ -338,41 +338,7 @@
 <p>在上一篇文章中，我们详细推导了基于四元数和误差状态的 EKF 数学模型。理论推导无论多么完美，最终都需要落地成代码。本文我们将结合一个实际项目的源码（基于 C++ 和 Eigen 库），带你一行行看懂 EKF 的实现细节。</p>
 <h2 id="1-类的定义与初始化-ekfhpp">1. 类的定义与初始化 (<code>ekf.hpp</code>)
 </h2><p>在 C++ 中，我们通常会定义一个 <code>ekf</code> 类来维护卡尔曼滤波器的状态和协方差矩阵。这里我们使用开源且极其强大的矩阵运算库 <strong>Eigen</strong>。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#ifndef TOOLS__EKF_HPP
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#ifndef TOOLS__EKF_HPP
 </span></span></span><span class="line"><span class="cl"><span class="cp">#define TOOLS__EKF_HPP
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;Eigen/Geometry&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;eigen3/Eigen/src/Geometry/Quaternion.h&gt;</span><span class="cp">
@@ -402,38 +368,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#endif
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>在这里，值得注意的是协方差矩阵 <code>P</code> 和 <code>R</code> 都是 $3 \times 3$ 的矩阵。这就是我们在<a class="link" href="/p/ekf-math/" >上一篇</a>中提到的：状态虽为四元数（4维），但为了满足归一化约束，我们对**误差角（3维）**进行协方差维护。</p>
+</span></span></span></code></pre></div><p>在这里，值得注意的是协方差矩阵 <code>P</code> 和 <code>R</code> 都是 $3 \times 3$ 的矩阵。这就是我们在<a class="link" href="/p/ekf-math/" >上一篇</a>中提到的：状态虽为四元数（4维），但为了满足归一化约束，我们对**误差角（3维）**进行协方差维护。</p>
 <h2 id="2-状态预测函数predict">2. 状态预测函数：<code>predict</code>
 </h2><p>预测函数的任务是通过当前的角速度 $\omega$ 和角加速度 $\alpha$ 积分，求出这 $\Delta t$ 时间内的微小旋转，然后更新四元数。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="n">ekf</span><span class="o">::</span><span class="n">predict</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">omega</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dt</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="n">ekf</span><span class="o">::</span><span class="n">predict</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">omega</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dt</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 计算在这 dt 时间内的角度变化量 (delta_theta)
 </span></span></span><span class="line"><span class="cl">    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">delta_theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">omega</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">;</span>
@@ -455,29 +393,9 @@
 </span></span><span class="line"><span class="cl">    <span class="c1">// 四元数乘法完成姿态的预测叠加
 </span></span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">q</span> <span class="o">*</span> <span class="n">q_update</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="3-雅可比矩阵calculate_jacobian">3. 雅可比矩阵：<code>calculate_jacobian</code>
+</span></span></code></pre></div><h2 id="3-雅可比矩阵calculate_jacobian">3. 雅可比矩阵：<code>calculate_jacobian</code>
 </h2><p>这里构建了反对称矩阵（Skew-symmetric matrix），用于计算雅可比矩阵 $J$：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="n">ekf</span><span class="o">::</span><span class="n">calculate_jacobian</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">omega</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dt</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="n">ekf</span><span class="o">::</span><span class="n">calculate_jacobian</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">omega</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dt</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="n">j</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="n">omega_skew</span><span class="p">;</span>
@@ -491,43 +409,9 @@
 </span></span></span><span class="line"><span class="cl">    <span class="n">j</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="o">::</span><span class="n">Identity</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">omega_skew</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">j</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="4-ekf-核心更新逻辑ekf_update">4. EKF 核心更新逻辑：<code>ekf_update</code>
+</span></span></code></pre></div><h2 id="4-ekf-核心更新逻辑ekf_update">4. EKF 核心更新逻辑：<code>ekf_update</code>
 </h2><p>这个函数是整个滤波器的灵魂所在，它结合了前两个函数，完成“预测-计算增益-修正-更新协方差”的闭环。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">ekf</span><span class="o">::</span><span class="n">ekf_update</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">omega</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dt</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">ekf</span><span class="o">::</span><span class="n">ekf_update</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">omega</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dt</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 1. 预测步：得到先验状态 q_u
 </span></span></span><span class="line"><span class="cl">    <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="n">q_u</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">dt</span><span class="p">);</span>
@@ -555,9 +439,7 @@
 </span></span><span class="line"><span class="cl">    <span class="c1">// 7. 更新协方差矩阵 P
 </span></span></span><span class="line"><span class="cl">    <span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="o">::</span><span class="n">Identity</span><span class="p">()</span> <span class="o">-</span> <span class="n">K</span> <span class="o">*</span> <span class="n">J</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="总结">总结
+</span></span></code></pre></div><h2 id="总结">总结
 </h2><p>这段代码是一个非常轻量且实用的工程化 EKF 实现，它舍弃了标准 EKF 中过于繁琐的矩阵运算（例如舍弃了复杂的高维状态转移阵，精简了观测矩阵提取的步骤），直接针对“四元数位姿跟踪”这一特定场景进行了极致优化。通过<strong>协方差降维</strong>和<strong>一阶近似泰勒展开</strong>，使得这套算法可以在算力有限的嵌入式设备（如各类机器人的下位机/视觉板）上高速运行。</p>
 <p>至此，我们的 EKF 算法详解系列就全部结束了！希望这三篇文章能帮你从概念到数学，再到代码落地，彻底打通 EKF 的任督二脉。</p>
 

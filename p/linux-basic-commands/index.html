@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="最近在和我一个学长做项目。因为十分贫穷，加上校内服务器十分堵塞，压根排不到我们，最后我们决定上网租服务器（虽然发现这个决策使得我们的钱包更加不饱满）。这个时候发现学长并不熟悉 Linux 的一些常用指令，这也启发我给自己的 blog 加上一篇关于常用指令的推文。\n">
+<title>Linux常用指令入门</title>
+
+<link rel='canonical' href='https://Galileo927.github.io/p/linux-basic-commands/'>
+
+<link rel="stylesheet" href="/scss/style.min.e49b891554ac6c5eb2c3069e8725dec41e3063f5aca2317e156cb88d175c523c.css"><meta property='og:title' content="Linux常用指令入门">
+<meta property='og:description' content="最近在和我一个学长做项目。因为十分贫穷，加上校内服务器十分堵塞，压根排不到我们，最后我们决定上网租服务器（虽然发现这个决策使得我们的钱包更加不饱满）。这个时候发现学长并不熟悉 Linux 的一些常用指令，这也启发我给自己的 blog 加上一篇关于常用指令的推文。\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/linux-basic-commands/'>
+<meta property='og:site_name' content='Galileo Y'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='命令行' /><meta property='article:tag' content='tools' /><meta property='article:published_time' content='2026-05-11T17:46:51&#43;08:00'/><meta property='article:modified_time' content='2026-05-11T17:46:51&#43;08:00'/>
+<meta name="twitter:title" content="Linux常用指令入门">
+<meta name="twitter:description" content="最近在和我一个学长做项目。因为十分贫穷，加上校内服务器十分堵塞，压根排不到我们，最后我们决定上网租服务器（虽然发现这个决策使得我们的钱包更加不饱满）。这个时候发现学长并不熟悉 Linux 的一些常用指令，这也启发我给自己的 blog 加上一篇关于常用指令的推文。\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_c5ecd16ba564b335.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😆</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Galileo Y</a></h1>
+            <h2 class="site-description">欢迎来到我的博客，我在这个网站分享一下我的学习笔记和一些生活琐事。</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='mailto:galileoyao@gmail.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="512px" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="_x31_12-gmail_x2C__email_x2C__mail"><g><g><g><rect height="358.87" style="fill:#F1F5F7;" width="357.904" x="77.045" y="76.565"/><path d="M256.002,293.738l178.947,141.697v-279.74L256.002,293.738z M256.002,293.738" style="fill:#DCE6EA;"/><path d="M449.861,76.565h-14.912L256.002,218.26L77.045,76.565H62.134      c-24.693,0-44.737,20.094-44.737,44.858v269.152c0,24.759,20.044,44.859,44.737,44.859h14.911v-279.74l178.957,138.014      l178.947-138.047v279.773h14.912c24.699,0,44.742-20.101,44.742-44.859V121.424C494.604,96.66,474.561,76.565,449.861,76.565      L449.861,76.565z M449.861,76.565" style="fill:#F84437;"/></g></g></g></g><g id="Layer_1"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Galileo927'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-查看当前所在位置">1. 查看当前所在位置</a></li>
+    <li><a href="#2-查看目录内容">2. 查看目录内容</a></li>
+    <li><a href="#3-切换目录">3. 切换目录</a></li>
+    <li><a href="#4-创建文件和目录">4. 创建文件和目录</a></li>
+    <li><a href="#5-复制移动和重命名">5. 复制、移动和重命名</a></li>
+    <li><a href="#6-删除文件和目录">6. 删除文件和目录</a></li>
+    <li><a href="#7-查看文件内容">7. 查看文件内容</a></li>
+    <li><a href="#8-搜索文件内容">8. 搜索文件内容</a></li>
+    <li><a href="#9-查找文件">9. 查找文件</a></li>
+    <li><a href="#10-查看磁盘和文件大小">10. 查看磁盘和文件大小</a></li>
+    <li><a href="#11-查看和结束进程">11. 查看和结束进程</a></li>
+    <li><a href="#12-权限相关命令">12. 权限相关命令</a></li>
+    <li><a href="#13-压缩和解压">13. 压缩和解压</a></li>
+    <li><a href="#14-网络相关命令">14. 网络相关命令</a></li>
+    <li><a href="#15-常用组合">15. 常用组合</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linux-basic-commands/">Linux常用指令入门</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2026-05-11</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>最近在和我一个学长做项目。因为十分贫穷，加上校内服务器十分堵塞，压根排不到我们，最后我们决定上网租服务器（虽然发现这个决策使得我们的钱包更加不饱满）。这个时候发现学长并不熟悉 Linux 的一些常用指令，这也启发我给自己的 blog 加上一篇关于常用指令的推文。</p>
+<p>Linux 的很多操作都可以通过命令行完成。刚开始接触时，不需要一次性记住所有命令，先掌握目录切换、文件操作、文件内容查看、权限管理和进程查看这几类常用指令，就可以完成大部分日常工作。</p>
+<p>本文记录一些入门阶段最常用的 Linux 指令，方便之后查阅。</p>
+<h2 id="1-查看当前所在位置">1. 查看当前所在位置
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span></code></pre></div><p><code>pwd</code> 会显示当前终端所在的目录路径。例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/home/user/project
+</span></span></code></pre></div><p>当你不知道自己现在在哪个文件夹时，可以先运行这个命令。</p>
+<h2 id="2-查看目录内容">2. 查看目录内容
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls
+</span></span></code></pre></div><p>常见用法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls          <span class="c1"># 查看当前目录下的文件</span>
+</span></span><span class="line"><span class="cl">ls -l       <span class="c1"># 以详细列表形式显示</span>
+</span></span><span class="line"><span class="cl">ls -a       <span class="c1"># 显示隐藏文件</span>
+</span></span><span class="line"><span class="cl">ls -lh      <span class="c1"># 以更易读的大小单位显示</span>
+</span></span></code></pre></div><p>在 Linux 中，以 <code>.</code> 开头的文件或目录是隐藏文件，例如 <code>.git</code>、<code>.bashrc</code>。</p>
+<h2 id="3-切换目录">3. 切换目录
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> 目录名
+</span></span></code></pre></div><p>常见用法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /home/user       <span class="c1"># 切换到指定绝对路径</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> project          <span class="c1"># 进入当前目录下的 project 文件夹</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ..               <span class="c1"># 返回上一级目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~                <span class="c1"># 回到当前用户的家目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> -                <span class="c1"># 回到上一次所在目录</span>
+</span></span></code></pre></div><p>绝对路径从 <code>/</code> 开始，相对路径从当前目录开始。</p>
+<h2 id="4-创建文件和目录">4. 创建文件和目录
+</h2><p>创建目录：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir notes
+</span></span></code></pre></div><p>递归创建多级目录：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p projects/linux/test
+</span></span></code></pre></div><p>创建空文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch hello.txt
+</span></span></code></pre></div><p><code>touch</code> 如果遇到不存在的文件，会创建它；如果文件已经存在，会更新它的修改时间。</p>
+<h2 id="5-复制移动和重命名">5. 复制、移动和重命名
+</h2><p>复制文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp source.txt target.txt
+</span></span></code></pre></div><p>复制目录：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp -r old_dir new_dir
+</span></span></code></pre></div><p>移动文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv file.txt /tmp/
+</span></span></code></pre></div><p>重命名文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv old_name.txt new_name.txt
+</span></span></code></pre></div><p><code>mv</code> 既可以移动文件，也可以重命名文件，具体取决于目标路径。</p>
+<h2 id="6-删除文件和目录">6. 删除文件和目录
+</h2><p>删除文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm file.txt
+</span></span></code></pre></div><p>删除目录：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -r folder
+</span></span></code></pre></div><p>强制删除：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf folder
+</span></span></code></pre></div><p><code>rm -rf</code> 很危险，它不会进入回收站，执行前一定要确认路径是否正确。</p>
+<h2 id="7-查看文件内容">7. 查看文件内容
+</h2><p>一次性输出文件内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat file.txt
+</span></span></code></pre></div><p>分页查看长文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">less file.txt
+</span></span></code></pre></div><p>查看文件开头：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">head file.txt
+</span></span><span class="line"><span class="cl">head -n <span class="m">20</span> file.txt
+</span></span></code></pre></div><p>查看文件末尾：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail file.txt
+</span></span><span class="line"><span class="cl">tail -n <span class="m">20</span> file.txt
+</span></span></code></pre></div><p>实时查看日志：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail -f app.log
+</span></span></code></pre></div><p>查看程序日志时，<code>tail -f</code> 非常常用。</p>
+<h2 id="8-搜索文件内容">8. 搜索文件内容
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep <span class="s2">&#34;keyword&#34;</span> file.txt
+</span></span></code></pre></div><p>常见用法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep <span class="s2">&#34;error&#34;</span> app.log
+</span></span><span class="line"><span class="cl">grep -n <span class="s2">&#34;error&#34;</span> app.log        <span class="c1"># 显示行号</span>
+</span></span><span class="line"><span class="cl">grep -i <span class="s2">&#34;error&#34;</span> app.log        <span class="c1"># 忽略大小写</span>
+</span></span><span class="line"><span class="cl">grep -r <span class="s2">&#34;TODO&#34;</span> .               <span class="c1"># 在当前目录递归搜索</span>
+</span></span></code></pre></div><p>如果只记一个搜索命令，先记住 <code>grep -r &quot;关键词&quot; .</code>。</p>
+<h2 id="9-查找文件">9. 查找文件
+</h2><p>按文件名查找：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -name <span class="s2">&#34;*.md&#34;</span>
+</span></span></code></pre></div><p>查找当前目录下所有 Markdown 文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f -name <span class="s2">&#34;*.md&#34;</span>
+</span></span></code></pre></div><p>查找目录：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type d -name <span class="s2">&#34;build&#34;</span>
+</span></span></code></pre></div><p><code>find</code> 的第一个参数表示从哪里开始找，<code>.</code> 表示当前目录。</p>
+<h2 id="10-查看磁盘和文件大小">10. 查看磁盘和文件大小
+</h2><p>查看磁盘空间：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">df -h
+</span></span></code></pre></div><p>查看当前目录下各文件和目录大小：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">du -sh *
+</span></span></code></pre></div><p>查看某个目录总大小：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">du -sh folder
+</span></span></code></pre></div><p>其中 <code>-h</code> 表示 human-readable，会用 KB、MB、GB 这种更容易理解的单位显示。</p>
+<h2 id="11-查看和结束进程">11. 查看和结束进程
+</h2><p>查看当前用户的进程：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ps
+</span></span></code></pre></div><p>查看所有进程：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ps aux
+</span></span></code></pre></div><p>动态查看系统资源：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">top
+</span></span></code></pre></div><p>结束某个进程：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">kill</span> PID
+</span></span></code></pre></div><p>如果进程无法正常结束，可以使用：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">kill</span> -9 PID
+</span></span></code></pre></div><p><code>PID</code> 是进程编号，可以通过 <code>ps aux</code> 或 <code>top</code> 找到。</p>
+<h2 id="12-权限相关命令">12. 权限相关命令
+</h2><p>查看权限：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls -l
+</span></span></code></pre></div><p>给脚本添加可执行权限：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x script.sh
+</span></span></code></pre></div><p>修改文件拥有者：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown user:user file.txt
+</span></span></code></pre></div><p><code>sudo</code> 表示用管理员权限执行命令。使用 <code>sudo</code> 前要确认命令确实需要更高权限。</p>
+<h2 id="13-压缩和解压">13. 压缩和解压
+</h2><p>打包并压缩：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -czvf archive.tar.gz folder
+</span></span></code></pre></div><p>解压：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -xzvf archive.tar.gz
+</span></span></code></pre></div><p>常见参数含义：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">c: create，创建压缩包
+</span></span><span class="line"><span class="cl">x: extract，解压
+</span></span><span class="line"><span class="cl">z: 使用 gzip
+</span></span><span class="line"><span class="cl">v: 显示过程
+</span></span><span class="line"><span class="cl">f: 指定文件名
+</span></span></code></pre></div><h2 id="14-网络相关命令">14. 网络相关命令
+</h2><p>测试网络连通：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ping github.com
+</span></span></code></pre></div><p>下载文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -O https://example.com/file.zip
+</span></span></code></pre></div><p>查看当前机器 IP：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip addr
+</span></span></code></pre></div><p>在 macOS 上，类似命令是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ifconfig
+</span></span></code></pre></div><h2 id="15-常用组合">15. 常用组合
+</h2><p>进入目录并查看内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> project
+</span></span><span class="line"><span class="cl">ls -lh
+</span></span></code></pre></div><p>查找日志中的错误：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -n <span class="s2">&#34;error&#34;</span> app.log
+</span></span></code></pre></div><p>查看某个目录大小：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">du -sh .
+</span></span></code></pre></div><p>查看最近的日志输出：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail -f app.log
+</span></span></code></pre></div><p>查找当前目录下所有 Python 文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f -name <span class="s2">&#34;*.py&#34;</span>
+</span></span></code></pre></div><h2 id="总结">总结
+</h2><p>Linux 命令入门可以先按使用场景记忆：</p>
+<ul>
+<li>位置和目录：<code>pwd</code>、<code>ls</code>、<code>cd</code></li>
+<li>文件操作：<code>mkdir</code>、<code>touch</code>、<code>cp</code>、<code>mv</code>、<code>rm</code></li>
+<li>内容查看：<code>cat</code>、<code>less</code>、<code>head</code>、<code>tail</code></li>
+<li>搜索查找：<code>grep</code>、<code>find</code></li>
+<li>系统状态：<code>df</code>、<code>du</code>、<code>ps</code>、<code>top</code></li>
+<li>权限管理：<code>chmod</code>、<code>chown</code>、<code>sudo</code></li>
+</ul>
+<p>这些命令不需要死记硬背，最好的方式是在真实项目和日常操作里反复使用。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/">命令行</a>
+        
+            <a href="/tags/tools/">Tools</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 Example Person
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://Galileo927.github.io/p/anaconda-and-pycharm-installation/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Anaconda及pycharm的安装">
+<link rel="stylesheet" href="/scss/style.min.e49b891554ac6c5eb2c3069e8725dec41e3063f5aca2317e156cb88d175c523c.css"><meta property='og:title' content="Anaconda及pycharm的安装">
 <meta property='og:description' content="Python开发环境搭建指南：Anaconda与PyCharm安装教程 前言 本文是为Python新手准备的开发环境配置指南。对于初学者，我们强烈推荐使用Anaconda和PyCharm的组合——Anaconda提供了完整的Python环境和科学计算库，而PyCharm则是专业的Python开发工具，二者搭配能显著降低学习门槛。\n">
 <meta property='og:url' content='https://Galileo927.github.io/p/anaconda-and-pycharm-installation/'>
 <meta property='og:site_name' content='Galileo Y'>
@@ -393,17 +393,9 @@
 </ol>
 <h3 id="4-验证安装">4. 验证安装
 </h3><p>打开命令提示符（Win+R → 输入cmd），执行：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda --version
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda --version
 </span></span><span class="line"><span class="cl"><span class="c1"># 应显示类似：conda 23.7.4</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/images/python/anaconda%e4%b8%8b%e8%bd%bd%e6%88%90%e5%8a%9f.png"
+</span></span></code></pre></div><p><img src="/images/python/anaconda%e4%b8%8b%e8%bd%bd%e6%88%90%e5%8a%9f.png"
 	
 	
 	
@@ -449,25 +441,11 @@
 </ol>
 <h3 id="4-配置conda环境">4. 配置conda环境
 </h3><p>1.在你的任务栏中搜索<code>anaconda prompt</code>，打开之后输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n myenv <span class="nv">python</span><span class="o">=</span>3.11
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在这里myenv是你创建的虚拟环境的名字，3.11是这个环境中python的版本号
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n myenv <span class="nv">python</span><span class="o">=</span>3.11
+</span></span></code></pre></div><p>在这里myenv是你创建的虚拟环境的名字，3.11是这个环境中python的版本号
 2.稍等片刻后输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda activate myenv
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>3.像这样你就创建成功了
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda activate myenv
+</span></span></code></pre></div><p>3.像这样你就创建成功了
 <img src="/images/python/%e7%8e%af%e5%a2%83.png"
 	
 	
@@ -517,15 +495,8 @@ E:\anaconda\Scripts\conda.exe（我安装到了E盘）
 <li>
 <p><strong>验证</strong><br>
 新建 <code>hello.py</code> 输入以下代码并运行 <code>Shift+F10</code>：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello world&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如果可以正常输出<code>hello world</code>那么就成功安装好了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello world&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>如果可以正常输出<code>hello world</code>那么就成功安装好了。</p>
 </li>
 </ol>
 

@@ -7,7 +7,31 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Thu, 12 Mar 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 11 May 2026 17:46:51 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux</title>
+        <link>https://Galileo927.github.io/tags/linux/</link>
+        <pubDate>Mon, 11 May 2026 17:46:51 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/tags/linux/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Tools</title>
+        <link>https://Galileo927.github.io/tags/tools/</link>
+        <pubDate>Mon, 11 May 2026 17:46:51 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/tags/tools/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>命令行</title>
+        <link>https://Galileo927.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+        <pubDate>Mon, 11 May 2026 17:46:51 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>C&#43;&#43;</title>
         <link>https://Galileo927.github.io/tags/c&#43;&#43;/</link>
         <pubDate>Thu, 12 Mar 2026 00:00:00 +0800</pubDate>
@@ -93,14 +117,6 @@
         <pubDate>Wed, 12 Nov 2025 12:16:19 +0800</pubDate>
         
         <guid>https://Galileo927.github.io/tags/git/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Tools</title>
-        <link>https://Galileo927.github.io/tags/tools/</link>
-        <pubDate>Wed, 12 Nov 2025 12:16:19 +0800</pubDate>
-        
-        <guid>https://Galileo927.github.io/tags/tools/</guid>
         <description></description>
         </item>
         <item>
