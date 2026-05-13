@@ -430,7 +430,7 @@ $$ P_{new} = (I_{3\times3} - K J) P $$&lt;p&gt;以上就是一套完整用于姿
 &lt;li&gt;&lt;strong&gt;提交 (Commit)&lt;/strong&gt;: 将你的代码更改保存到本地仓库。每次提交都有一个唯一的 ID 和一条描述信息。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;推送 (Push)&lt;/strong&gt;: 将本地仓库的提交上传到远程仓库（例如 GitHub）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;拉取 (Pull)&lt;/strong&gt;: 从远程仓库获取最新的更改并合并到你的本地仓库。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;分支 (Branch)&lt;/strong&gt;: 为了在不影响主线（通常是 &lt;code&gt;main&lt;/code&gt; 或 &lt;code&gt;master&lt;/code&gt; 分支）开发的情况下进行功能开发或修复 bug，你可以创建一个分支。开发完成后，再将分支合并到主线。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分支 (Branch)&lt;/strong&gt;: 为了在不影响主线（通常是 &lt;code&gt;main&lt;/code&gt; 或 &lt;code&gt;master&lt;/code&gt; 分支：这几年估计都改成了main，说是master有奇怪的隐喻😅）开发的情况下进行功能开发或修复 bug，你可以创建一个分支。开发完成后，再将分支合并到主线。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;拉取请求 (Pull Request / PR)&lt;/strong&gt;: 当你希望将你的分支合并到另一个分支时，你可以创建一个拉取请求。这是一个请求审查和讨论你的代码更改的地方。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;合并 (Merge)&lt;/strong&gt;: 将一个分支的更改合并到另一个分支。&lt;/li&gt;
 &lt;/ul&gt;
