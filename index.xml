@@ -585,7 +585,7 @@ $$ P_{new} = (I_{3\times3} - K J) P $$&lt;p&gt;以上就是一套完整用于姿
 &lt;li&gt;180+预装科学计算库（如NumPy, Pandas, Matplotlib等）&lt;/li&gt;
 &lt;li&gt;Jupyter Notebook等实用工具&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;安装Anaconda后，您就无需单独安装Python和其他基础库了。&lt;/p&gt;
+&lt;p&gt;安装Anaconda后就无需单独安装Python和其他基础库了。&lt;/p&gt;
 &lt;h3 id=&#34;2-下载安装包&#34;&gt;2. 下载安装包
 &lt;/h3&gt;&lt;h4 id=&#34;21-官方渠道不推荐新手使用&#34;&gt;2.1 官方渠道（不推荐新手使用）
 &lt;/h4&gt;&lt;p&gt;官网地址：&lt;a class=&#34;link&#34; href=&#34;https://www.anaconda.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
