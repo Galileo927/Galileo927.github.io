@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="女神拒绝我后，C++ 成了我的命中劫 1. 故事开始之前 遥想当年，高考结束以后，很多人都在忙着和自己的女神或者男神表白，试图给青春画上一个浪漫的句号。\n而我，在那个本该热血、暧昧、充满青春滤镜的夏天，也展示出了自己非常独特的一面——\n">
+<title>女神拒绝我后，C&#43;&#43; 成了我的命中劫</title>
+
+<link rel='canonical' href='https://Galileo927.github.io/p/cpp-series-preface/'>
+
+<link rel="stylesheet" href="/scss/style.min.e49b891554ac6c5eb2c3069e8725dec41e3063f5aca2317e156cb88d175c523c.css"><meta property='og:title' content="女神拒绝我后，C++ 成了我的命中劫">
+<meta property='og:description' content="女神拒绝我后，C++ 成了我的命中劫 1. 故事开始之前 遥想当年，高考结束以后，很多人都在忙着和自己的女神或者男神表白，试图给青春画上一个浪漫的句号。\n而我，在那个本该热血、暧昧、充满青春滤镜的夏天，也展示出了自己非常独特的一面——\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/cpp-series-preface/'>
+<meta property='og:site_name' content='Galileo Y'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;' /><meta property='article:tag' content='学习记录' /><meta property='article:tag' content='编程' /><meta property='article:published_time' content='2026-05-15T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2026-05-15T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="女神拒绝我后，C++ 成了我的命中劫">
+<meta name="twitter:description" content="女神拒绝我后，C++ 成了我的命中劫 1. 故事开始之前 遥想当年，高考结束以后，很多人都在忙着和自己的女神或者男神表白，试图给青春画上一个浪漫的句号。\n而我，在那个本该热血、暧昧、充满青春滤镜的夏天，也展示出了自己非常独特的一面——\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_c5ecd16ba564b335.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😆</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Galileo Y</a></h1>
+            <h2 class="site-description">欢迎来到我的博客，我在这个网站分享一下我的学习笔记和一些生活琐事。</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='mailto:galileoyao@gmail.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="512px" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="_x31_12-gmail_x2C__email_x2C__mail"><g><g><g><rect height="358.87" style="fill:#F1F5F7;" width="357.904" x="77.045" y="76.565"/><path d="M256.002,293.738l178.947,141.697v-279.74L256.002,293.738z M256.002,293.738" style="fill:#DCE6EA;"/><path d="M449.861,76.565h-14.912L256.002,218.26L77.045,76.565H62.134      c-24.693,0-44.737,20.094-44.737,44.858v269.152c0,24.759,20.044,44.859,44.737,44.859h14.911v-279.74l178.957,138.014      l178.947-138.047v279.773h14.912c24.699,0,44.742-20.101,44.742-44.859V121.424C494.604,96.66,474.561,76.565,449.861,76.565      L449.861,76.565z M449.861,76.565" style="fill:#F84437;"/></g></g></g></g><g id="Layer_1"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Galileo927'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-故事开始之前">1. 故事开始之前</a></li>
+    <li><a href="#2-为什么偏偏是-c">2. 为什么偏偏是 C++</a></li>
+    <li><a href="#3-我现在并不熟练">3. 我现在并不熟练</a></li>
+    <li><a href="#4-目录">4. 目录</a>
+      <ol>
+        <li><a href="#第一部分c-基础概念">第一部分：C++ 基础概念</a></li>
+        <li><a href="#第二部分对象与内存管理">第二部分：对象与内存管理</a></li>
+        <li><a href="#第三部分stl-与常用容器">第三部分：STL 与常用容器</a></li>
+        <li><a href="#第四部分编译调试与工程工具">第四部分：编译、调试与工程工具</a></li>
+        <li><a href="#第五部分小项目实践">第五部分：小项目实践</a></li>
+      </ol>
+    </li>
+    <li><a href="#5-我想用什么方式学-c">5. 我想用什么方式学 C++</a></li>
+    <li><a href="#6-为什么要把这些写在-blog-上">6. 为什么要把这些写在 blog 上</a></li>
+    <li><a href="#7-从这里开始">7. 从这里开始</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/c&#43;&#43;%E7%B3%BB%E5%88%97/" style="background-color: #7c3aed; color: #fff;">
+                C&#43;&#43;系列
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/cpp-series-preface/">女神拒绝我后，C&#43;&#43; 成了我的命中劫</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2026-05-15</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="女神拒绝我后c-成了我的命中劫">女神拒绝我后，C++ 成了我的命中劫
+</h1><h2 id="1-故事开始之前">1. 故事开始之前
+</h2><p>遥想当年，高考结束以后，很多人都在忙着和自己的女神或者男神表白，试图给青春画上一个浪漫的句号。</p>
+<p>而我，在那个本该热血、暧昧、充满青春滤镜的夏天，也展示出了自己非常独特的一面——</p>
+<p>我压根没去理那个陪伴了我整个青春时期的女神。</p>
+<p>当然，听起来好像挺潇洒。</p>
+<p>实际情况是：我在高考前就已经表白过了，人家压根没搭理我。</p>
+<p>所以严格来说，并不是我没有选择爱情，而是爱情没有选择我。</p>
+<p>于是，高考结束后的我，带着一种“反正也没人理我”的洒脱，开始疯狂游玩。那段时间没有作业，没有考试，也没有早八，人生看起来突然自由得有些不真实。</p>
+<p>但这种自由没有持续太久。</p>
+<p>疯玩了一阵之后，我慢慢感受到了一种很奇怪的空虚。每天好像都很轻松，但又总觉得少了点什么。以前被考试推着走，至少知道自己每天为什么起床；可当那个目标突然消失以后，我反而不知道自己该往哪里走了。</p>
+<p>就在这个时候，我看到了大学实验室开始招新。</p>
+<p>那一刻，我和 C++ 的缘分，算是正式开始了。</p>
+<h2 id="2-为什么偏偏是-c">2. 为什么偏偏是 C++
+</h2><p>说实话，我一开始并没有什么特别宏大的目标。</p>
+<p>不是因为我突然立志要成为系统架构师，也不是因为我那时候已经理解了什么叫高性能计算、底层开发、内存模型、工程能力。</p>
+<p>更真实的情况是：我只是觉得，实验室里的东西看起来很酷。</p>
+<p>写代码、跑程序、做项目、调设备，这些事情听起来比单纯上课更接近我想象中的“真正的技术”。而 C++，正好就是那个我绕不开的入口。</p>
+<p>后来接触得多了，我慢慢意识到，C++ 这门语言很特别。</p>
+<p>它不像 Python 那样一上来就很舒服，也不像很多脚本语言那样可以快速看到结果。C++ 经常让人痛苦：指针、引用、内存、对象生命周期、编译链接、模板、构造析构……每一个概念都像是在提醒你：</p>
+<blockquote>
+<p>你以为你懂了？其实你还差得远。</p>
+</blockquote>
+<p>但也正是因为这样，C++ 很适合用来训练一个人的工程基本功。</p>
+<p>它会逼着你去理解程序到底是怎么运行的，变量到底放在哪里，内存为什么会泄漏，对象什么时候创建、什么时候销毁，为什么有些代码看起来没问题但运行起来就是崩。</p>
+<p>这种感觉一开始很折磨，但后来我发现，这可能正是我需要补上的东西。</p>
+<h2 id="3-我现在并不熟练">3. 我现在并不熟练
+</h2><p>必须承认，我现在并不是一个很熟练的 C++ 使用者。</p>
+<p>很多东西我还在补。</p>
+<p>比如指针和引用，我以前知道怎么写，但不一定真的知道它们在内存里意味着什么。</p>
+<p>比如 const，我知道它表示“常量”，但遇到 <code>const int*</code>、<code>int* const</code>、<code>const int&amp;</code> 的时候，还是会忍不住停下来想一想。</p>
+<p>比如构造函数、析构函数、拷贝构造、移动语义，这些词看起来都认识，但真要在工程里写对，其实没那么简单。</p>
+<p>再比如 CMake、gdb、Linux 编译链接这些东西，以前总觉得它们只是工具，后来才发现，工程开发里很多问题根本不是算法问题，而是你连程序怎么编译、怎么链接、怎么调试都没搞明白。</p>
+<p>所以这个系列不是“C++ 高手教程”。</p>
+<p>更准确地说，它是一个学习记录。</p>
+<p>我想把自己从“会写一点 C++ 语法”，慢慢推进到“能写比较可靠的 C++ 工程代码”的过程记录下来。</p>
+<h2 id="4-目录">4. 目录
+</h2><p>这个系列会从 C++ 最基础、最容易混乱的概念开始，一步一步往工程化方向推进。</p>
+<p>目前暂定目录如下，后面会根据学习进度不断补充和调整。</p>
+<h3 id="第一部分c-基础概念">第一部分：C++ 基础概念
+</h3><ol>
+<li>变量、地址和指针：我终于理解了指针是什么</li>
+<li>引用和指针到底有什么区别</li>
+<li>const 到底修饰的是谁</li>
+<li>栈和堆到底有什么区别</li>
+<li>new/delete 和 malloc/free 有什么区别</li>
+</ol>
+<h3 id="第二部分对象与内存管理">第二部分：对象与内存管理
+</h3><ol start="6">
+<li>构造函数和析构函数什么时候执行</li>
+<li>浅拷贝和深拷贝为什么危险</li>
+<li>拷贝构造函数和赋值运算符有什么区别</li>
+<li>为什么 C++ 析构函数有时要写 virtual</li>
+<li>this 指针到底是什么</li>
+</ol>
+<h3 id="第三部分stl-与常用容器">第三部分：STL 与常用容器
+</h3><ol start="11">
+<li>vector 为什么会自动扩容</li>
+<li>vector 和 list 到底应该怎么选</li>
+<li>map 和 unordered_map 有什么区别</li>
+<li>迭代器失效是什么问题</li>
+<li>push_back 和 emplace_back 有什么区别</li>
+</ol>
+<h3 id="第四部分编译调试与工程工具">第四部分：编译、调试与工程工具
+</h3><ol start="16">
+<li>C++ 项目为什么要分 .h 和 .cpp</li>
+<li>一个 C++ 程序从 .cpp 到可执行文件经历了什么</li>
+<li>第一次使用 CMake 管理 C++ 项目</li>
+<li>第一次用 gdb 调试段错误</li>
+<li>静态库和动态库有什么区别</li>
+</ol>
+<h3 id="第五部分小项目实践">第五部分：小项目实践
+</h3><ol start="21">
+<li>用 C++ 写一个命令行小工具</li>
+<li>从零写一个简单日志系统</li>
+<li>线程池到底解决了什么问题</li>
+<li>从零写一个最简单的线程池</li>
+<li>一个 C++ 小项目的完整复盘</li>
+</ol>
+<p>这些标题不一定一次性全部写完。</p>
+<p>它们更像是一张路线图：我会先从最基础的问题开始，慢慢把 C++ 这条路走清楚。</p>
+<h2 id="5-我想用什么方式学-c">5. 我想用什么方式学 C++
+</h2><p>我以前也看过不少教程，但看教程有一个问题：当时好像懂了，过几天又忘了。</p>
+<p>后来我发现，真正能留下来的东西，往往不是“我看懂了什么”，而是“我亲手验证过什么”。</p>
+<p>所以这个系列里，我会尽量按照这样的方式写：</p>
+<ol>
+<li>我为什么学这个问题</li>
+<li>我一开始哪里不理解</li>
+<li>用一段最小代码复现现象</li>
+<li>观察运行结果</li>
+<li>解释背后的原因</li>
+<li>最后写下我目前的理解</li>
+</ol>
+<p>如果还有没搞懂的地方，我也会直接写出来。</p>
+<p>因为学习本来就不是一次性完成的。</p>
+<p>有些概念第一次只能理解 50%，过一段时间写项目遇到了，再回头看，可能才能理解到 80%。再等真正踩坑了，才会突然意识到：原来书上那句话是这个意思。</p>
+<h2 id="6-为什么要把这些写在-blog-上">6. 为什么要把这些写在 blog 上
+</h2><p>一方面，是为了逼自己输出。</p>
+<p>如果只是看视频、看书、写一点零散代码，很容易产生一种“我学过了”的错觉。但真正写成文章时，你会发现很多东西其实没有想清楚。</p>
+<p>你能不能把一个概念讲明白，往往能暴露你到底懂没懂。</p>
+<p>另一方面，我也希望这个 blog 不是一个空荡荡的简历页面，而是一个能看见成长轨迹的地方。</p>
+<p>我不想把自己包装成一个已经很厉害的人。</p>
+<p>我更希望别人在阅读我博客的时候感受到的是：</p>
+<p>这个人选择的方向很有趣诶，看看他都踩过哪些坑，他在前面都有什么经验总结吧</p>
+<p>这对我来说就够了。</p>
+<h2 id="7-从这里开始">7. 从这里开始
+</h2><p>所以，这个 C++ 系列就从这里开始。</p>
+<p>它的起点不是某个宏大的项目，也不是某个听起来很厉害的技术名词。</p>
+<p>它的起点只是一个很普通的问题：</p>
+<blockquote>
+<p>我想真正把 C++ 学明白。</p>
+</blockquote>
+<p>从指针、引用、const、栈和堆这些基础概念开始，一点点往前走。</p>
+<p>也许这个过程会很慢，也许中间会反复踩坑，也许有些文章以后回头看会觉得幼稚。</p>
+<p>但没关系。</p>
+<p>至少从这里开始，我不是只是在“学过 C++”。</p>
+<p>而是在认真尝试理解它。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+        
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+        
+            <a href="/tags/%E7%BC%96%E7%A8%8B/">编程</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 Example Person
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

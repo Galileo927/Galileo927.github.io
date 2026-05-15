@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>C&#43;&#43; 学习记录系列 on Galileo Y</title>
+        <link>https://Galileo927.github.io/post/c&#43;&#43;%E7%B3%BB%E5%88%97/</link>
+        <description>Recent content in C&#43;&#43; 学习记录系列 on Galileo Y</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Example Person</copyright>
+        <lastBuildDate>Fri, 15 May 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/post/c++%E7%B3%BB%E5%88%97/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>女神拒绝我后，C&#43;&#43; 成了我的命中劫</title>
+        <link>https://Galileo927.github.io/p/cpp-series-preface/</link>
+        <pubDate>Fri, 15 May 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/p/cpp-series-preface/</guid>
+        <description>&lt;h1 id=&#34;女神拒绝我后c-成了我的命中劫&#34;&gt;女神拒绝我后，C++ 成了我的命中劫
+&lt;/h1&gt;&lt;h2 id=&#34;1-故事开始之前&#34;&gt;1. 故事开始之前
+&lt;/h2&gt;&lt;p&gt;遥想当年，高考结束以后，很多人都在忙着和自己的女神或者男神表白，试图给青春画上一个浪漫的句号。&lt;/p&gt;
+&lt;p&gt;而我，在那个本该热血、暧昧、充满青春滤镜的夏天，也展示出了自己非常独特的一面——&lt;/p&gt;
+&lt;p&gt;我压根没去理那个陪伴了我整个青春时期的女神。&lt;/p&gt;
+&lt;p&gt;当然，听起来好像挺潇洒。&lt;/p&gt;
+&lt;p&gt;实际情况是：我在高考前就已经表白过了，人家压根没搭理我。&lt;/p&gt;
+&lt;p&gt;所以严格来说，并不是我没有选择爱情，而是爱情没有选择我。&lt;/p&gt;
+&lt;p&gt;于是，高考结束后的我，带着一种“反正也没人理我”的洒脱，开始疯狂游玩。那段时间没有作业，没有考试，也没有早八，人生看起来突然自由得有些不真实。&lt;/p&gt;
+&lt;p&gt;但这种自由没有持续太久。&lt;/p&gt;
+&lt;p&gt;疯玩了一阵之后，我慢慢感受到了一种很奇怪的空虚。每天好像都很轻松，但又总觉得少了点什么。以前被考试推着走，至少知道自己每天为什么起床；可当那个目标突然消失以后，我反而不知道自己该往哪里走了。&lt;/p&gt;
+&lt;p&gt;就在这个时候，我看到了大学实验室开始招新。&lt;/p&gt;
+&lt;p&gt;那一刻，我和 C++ 的缘分，算是正式开始了。&lt;/p&gt;
+&lt;h2 id=&#34;2-为什么偏偏是-c&#34;&gt;2. 为什么偏偏是 C++
+&lt;/h2&gt;&lt;p&gt;说实话，我一开始并没有什么特别宏大的目标。&lt;/p&gt;
+&lt;p&gt;不是因为我突然立志要成为系统架构师，也不是因为我那时候已经理解了什么叫高性能计算、底层开发、内存模型、工程能力。&lt;/p&gt;
+&lt;p&gt;更真实的情况是：我只是觉得，实验室里的东西看起来很酷。&lt;/p&gt;
+&lt;p&gt;写代码、跑程序、做项目、调设备，这些事情听起来比单纯上课更接近我想象中的“真正的技术”。而 C++，正好就是那个我绕不开的入口。&lt;/p&gt;
+&lt;p&gt;后来接触得多了，我慢慢意识到，C++ 这门语言很特别。&lt;/p&gt;
+&lt;p&gt;它不像 Python 那样一上来就很舒服，也不像很多脚本语言那样可以快速看到结果。C++ 经常让人痛苦：指针、引用、内存、对象生命周期、编译链接、模板、构造析构……每一个概念都像是在提醒你：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;你以为你懂了？其实你还差得远。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但也正是因为这样，C++ 很适合用来训练一个人的工程基本功。&lt;/p&gt;
+&lt;p&gt;它会逼着你去理解程序到底是怎么运行的，变量到底放在哪里，内存为什么会泄漏，对象什么时候创建、什么时候销毁，为什么有些代码看起来没问题但运行起来就是崩。&lt;/p&gt;
+&lt;p&gt;这种感觉一开始很折磨，但后来我发现，这可能正是我需要补上的东西。&lt;/p&gt;
+&lt;h2 id=&#34;3-我现在并不熟练&#34;&gt;3. 我现在并不熟练
+&lt;/h2&gt;&lt;p&gt;必须承认，我现在并不是一个很熟练的 C++ 使用者。&lt;/p&gt;
+&lt;p&gt;很多东西我还在补。&lt;/p&gt;
+&lt;p&gt;比如指针和引用，我以前知道怎么写，但不一定真的知道它们在内存里意味着什么。&lt;/p&gt;
+&lt;p&gt;比如 const，我知道它表示“常量”，但遇到 &lt;code&gt;const int*&lt;/code&gt;、&lt;code&gt;int* const&lt;/code&gt;、&lt;code&gt;const int&amp;amp;&lt;/code&gt; 的时候，还是会忍不住停下来想一想。&lt;/p&gt;
+&lt;p&gt;比如构造函数、析构函数、拷贝构造、移动语义，这些词看起来都认识，但真要在工程里写对，其实没那么简单。&lt;/p&gt;
+&lt;p&gt;再比如 CMake、gdb、Linux 编译链接这些东西，以前总觉得它们只是工具，后来才发现，工程开发里很多问题根本不是算法问题，而是你连程序怎么编译、怎么链接、怎么调试都没搞明白。&lt;/p&gt;
+&lt;p&gt;所以这个系列不是“C++ 高手教程”。&lt;/p&gt;
+&lt;p&gt;更准确地说，它是一个学习记录。&lt;/p&gt;
+&lt;p&gt;我想把自己从“会写一点 C++ 语法”，慢慢推进到“能写比较可靠的 C++ 工程代码”的过程记录下来。&lt;/p&gt;
+&lt;h2 id=&#34;4-目录&#34;&gt;4. 目录
+&lt;/h2&gt;&lt;p&gt;这个系列会从 C++ 最基础、最容易混乱的概念开始，一步一步往工程化方向推进。&lt;/p&gt;
+&lt;p&gt;目前暂定目录如下，后面会根据学习进度不断补充和调整。&lt;/p&gt;
+&lt;h3 id=&#34;第一部分c-基础概念&#34;&gt;第一部分：C++ 基础概念
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;变量、地址和指针：我终于理解了指针是什么&lt;/li&gt;
+&lt;li&gt;引用和指针到底有什么区别&lt;/li&gt;
+&lt;li&gt;const 到底修饰的是谁&lt;/li&gt;
+&lt;li&gt;栈和堆到底有什么区别&lt;/li&gt;
+&lt;li&gt;new/delete 和 malloc/free 有什么区别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;第二部分对象与内存管理&#34;&gt;第二部分：对象与内存管理
+&lt;/h3&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;构造函数和析构函数什么时候执行&lt;/li&gt;
+&lt;li&gt;浅拷贝和深拷贝为什么危险&lt;/li&gt;
+&lt;li&gt;拷贝构造函数和赋值运算符有什么区别&lt;/li&gt;
+&lt;li&gt;为什么 C++ 析构函数有时要写 virtual&lt;/li&gt;
+&lt;li&gt;this 指针到底是什么&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;第三部分stl-与常用容器&#34;&gt;第三部分：STL 与常用容器
+&lt;/h3&gt;&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;vector 为什么会自动扩容&lt;/li&gt;
+&lt;li&gt;vector 和 list 到底应该怎么选&lt;/li&gt;
+&lt;li&gt;map 和 unordered_map 有什么区别&lt;/li&gt;
+&lt;li&gt;迭代器失效是什么问题&lt;/li&gt;
+&lt;li&gt;push_back 和 emplace_back 有什么区别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;第四部分编译调试与工程工具&#34;&gt;第四部分：编译、调试与工程工具
+&lt;/h3&gt;&lt;ol start=&#34;16&#34;&gt;
+&lt;li&gt;C++ 项目为什么要分 .h 和 .cpp&lt;/li&gt;
+&lt;li&gt;一个 C++ 程序从 .cpp 到可执行文件经历了什么&lt;/li&gt;
+&lt;li&gt;第一次使用 CMake 管理 C++ 项目&lt;/li&gt;
+&lt;li&gt;第一次用 gdb 调试段错误&lt;/li&gt;
+&lt;li&gt;静态库和动态库有什么区别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;第五部分小项目实践&#34;&gt;第五部分：小项目实践
+&lt;/h3&gt;&lt;ol start=&#34;21&#34;&gt;
+&lt;li&gt;用 C++ 写一个命令行小工具&lt;/li&gt;
+&lt;li&gt;从零写一个简单日志系统&lt;/li&gt;
+&lt;li&gt;线程池到底解决了什么问题&lt;/li&gt;
+&lt;li&gt;从零写一个最简单的线程池&lt;/li&gt;
+&lt;li&gt;一个 C++ 小项目的完整复盘&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这些标题不一定一次性全部写完。&lt;/p&gt;
+&lt;p&gt;它们更像是一张路线图：我会先从最基础的问题开始，慢慢把 C++ 这条路走清楚。&lt;/p&gt;
+&lt;h2 id=&#34;5-我想用什么方式学-c&#34;&gt;5. 我想用什么方式学 C++
+&lt;/h2&gt;&lt;p&gt;我以前也看过不少教程，但看教程有一个问题：当时好像懂了，过几天又忘了。&lt;/p&gt;
+&lt;p&gt;后来我发现，真正能留下来的东西，往往不是“我看懂了什么”，而是“我亲手验证过什么”。&lt;/p&gt;
+&lt;p&gt;所以这个系列里，我会尽量按照这样的方式写：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;我为什么学这个问题&lt;/li&gt;
+&lt;li&gt;我一开始哪里不理解&lt;/li&gt;
+&lt;li&gt;用一段最小代码复现现象&lt;/li&gt;
+&lt;li&gt;观察运行结果&lt;/li&gt;
+&lt;li&gt;解释背后的原因&lt;/li&gt;
+&lt;li&gt;最后写下我目前的理解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果还有没搞懂的地方，我也会直接写出来。&lt;/p&gt;
+&lt;p&gt;因为学习本来就不是一次性完成的。&lt;/p&gt;
+&lt;p&gt;有些概念第一次只能理解 50%，过一段时间写项目遇到了，再回头看，可能才能理解到 80%。再等真正踩坑了，才会突然意识到：原来书上那句话是这个意思。&lt;/p&gt;
+&lt;h2 id=&#34;6-为什么要把这些写在-blog-上&#34;&gt;6. 为什么要把这些写在 blog 上
+&lt;/h2&gt;&lt;p&gt;一方面，是为了逼自己输出。&lt;/p&gt;
+&lt;p&gt;如果只是看视频、看书、写一点零散代码，很容易产生一种“我学过了”的错觉。但真正写成文章时，你会发现很多东西其实没有想清楚。&lt;/p&gt;
+&lt;p&gt;你能不能把一个概念讲明白，往往能暴露你到底懂没懂。&lt;/p&gt;
+&lt;p&gt;另一方面，我也希望这个 blog 不是一个空荡荡的简历页面，而是一个能看见成长轨迹的地方。&lt;/p&gt;
+&lt;p&gt;我不想把自己包装成一个已经很厉害的人。&lt;/p&gt;
+&lt;p&gt;我更希望别人在阅读我博客的时候感受到的是：&lt;/p&gt;
+&lt;p&gt;这个人选择的方向很有趣诶，看看他都踩过哪些坑，他在前面都有什么经验总结吧&lt;/p&gt;
+&lt;p&gt;这对我来说就够了。&lt;/p&gt;
+&lt;h2 id=&#34;7-从这里开始&#34;&gt;7. 从这里开始
+&lt;/h2&gt;&lt;p&gt;所以，这个 C++ 系列就从这里开始。&lt;/p&gt;
+&lt;p&gt;它的起点不是某个宏大的项目，也不是某个听起来很厉害的技术名词。&lt;/p&gt;
+&lt;p&gt;它的起点只是一个很普通的问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我想真正把 C++ 学明白。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从指针、引用、const、栈和堆这些基础概念开始，一点点往前走。&lt;/p&gt;
+&lt;p&gt;也许这个过程会很慢，也许中间会反复踩坑，也许有些文章以后回头看会觉得幼稚。&lt;/p&gt;
+&lt;p&gt;但没关系。&lt;/p&gt;
+&lt;p&gt;至少从这里开始，我不是只是在“学过 C++”。&lt;/p&gt;
+&lt;p&gt;而是在认真尝试理解它。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
