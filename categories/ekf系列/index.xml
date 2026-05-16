@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>EKF系列 on Galileo Y</title>
+        <title>EKF算法概述 on Galileo Y</title>
         <link>https://Galileo927.github.io/categories/ekf%E7%B3%BB%E5%88%97/</link>
-        <description>Recent content in EKF系列 on Galileo Y</description>
+        <description>Recent content in EKF算法概述 on Galileo Y</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Example Person</copyright>
@@ -246,6 +246,21 @@ $$ P_{new} = (I_{3\times3} - K J) P $$&lt;p&gt;以上就是一套完整用于姿
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;总结&#34;&gt;总结
 &lt;/h2&gt;&lt;p&gt;这段代码是一个非常轻量且实用的工程化 EKF 实现，它舍弃了标准 EKF 中过于繁琐的矩阵运算（例如舍弃了复杂的高维状态转移阵，精简了观测矩阵提取的步骤），直接针对“四元数位姿跟踪”这一特定场景进行了极致优化。通过&lt;strong&gt;协方差降维&lt;/strong&gt;和&lt;strong&gt;一阶近似泰勒展开&lt;/strong&gt;，使得这套算法可以在算力有限的嵌入式设备（如各类机器人的下位机/视觉板）上高速运行。&lt;/p&gt;
 &lt;p&gt;至此，我们的 EKF 算法详解系列就全部结束了！希望这三篇文章能帮你从概念到数学，再到代码落地，彻底打通 EKF 的任督二脉。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>EKF算法概述</title>
+        <link>https://Galileo927.github.io/p/ekf-series/</link>
+        <pubDate>Thu, 12 Mar 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://Galileo927.github.io/p/ekf-series/</guid>
+        <description>&lt;p&gt;欢迎来到 EKF (扩展卡尔曼滤波) 算法详解系列。本系列将从基础概念出发，逐步深入到复杂的数学推导，并最终通过代码实现一个完整的 EKF 算法。&lt;/p&gt;
+&lt;h3 id=&#34;系列目录&#34;&gt;系列目录
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-introduction/&#34; &gt;EKF 算法详解：(一) 简介与基础&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-math/&#34; &gt;EKF 算法详解：(二) 数学推导&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/ekf-code/&#34; &gt;EKF 算法详解：(三) 代码实现&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         

@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Linux系统 on Galileo Y</title>
-        <link>https://Galileo927.github.io/categories/linux/</link>
+        <link>https://Galileo927.github.io/p/linux-system/</link>
         <description>Recent content in Linux系统 on Galileo Y</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Mon, 11 May 2026 17:46:51 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 11 May 2026 17:46:51 +0800</lastBuildDate><atom:link href="https://Galileo927.github.io/p/linux-system/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Linux常用指令入门</title>
         <link>https://Galileo927.github.io/p/linux-basic-commands/</link>
         <pubDate>Mon, 11 May 2026 17:46:51 +0800</pubDate>
@@ -165,19 +165,6 @@
 &lt;li&gt;权限管理：&lt;code&gt;chmod&lt;/code&gt;、&lt;code&gt;chown&lt;/code&gt;、&lt;code&gt;sudo&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;这些命令不需要死记硬背，最好的方式是在真实项目和日常操作里反复使用。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Linux系统</title>
-        <link>https://Galileo927.github.io/p/linux-system/</link>
-        <pubDate>Mon, 11 May 2026 17:46:51 +0800</pubDate>
-        
-        <guid>https://Galileo927.github.io/p/linux-system/</guid>
-        <description>&lt;p&gt;这个系列记录 Linux 系统使用、命令行操作和环境配置相关内容。&lt;/p&gt;
-&lt;h3 id=&#34;系列目录&#34;&gt;系列目录
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://Galileo927.github.io/p/linux-basic-commands/&#34; &gt;Linux常用指令入门&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
         </item>
         
