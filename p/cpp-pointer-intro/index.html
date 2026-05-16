@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 本文是 C++ 学习记录系列 的第二篇。\n上一篇：女神拒绝我后，C++ 成了我的命中劫\n这个事情还得从疫情期间说起，当时我正上高二，因为在学校旁边租了房子所以不怎么去上晚自习。母上大人作为家委会成员和班主任的关系还很不错（这个家委会的职位纯粹是想和老师打好关系在学校监视我才做的）。有一天晚上班主任给我妈打电话了说我们班有一个密切和患者接触过的人，于是我妈让我从家出发去班里通知————开（放）始（假）网（回）课（家）。正如我所说的，租的房子距离学校很近，所以我五分钟就到了给他们宣布了这好消息。但是我依旧等了很长时间————当时不只我一个人走读，还有同学正在回来取书的路上。\n">
+<title>她没给我联系方式，但变量给了我地址：C&#43;&#43; 指针入门</title>
+
+<link rel='canonical' href='https://Galileo927.github.io/p/cpp-pointer-intro/'>
+
+<link rel="stylesheet" href="/scss/style.min.44835b171224e8a2013321ad82a4afadc817538d72a459646737f531db8a46d8.css"><meta property='og:title' content="她没给我联系方式，但变量给了我地址：C++ 指针入门">
+<meta property='og:description' content=" 本文是 C++ 学习记录系列 的第二篇。\n上一篇：女神拒绝我后，C++ 成了我的命中劫\n这个事情还得从疫情期间说起，当时我正上高二，因为在学校旁边租了房子所以不怎么去上晚自习。母上大人作为家委会成员和班主任的关系还很不错（这个家委会的职位纯粹是想和老师打好关系在学校监视我才做的）。有一天晚上班主任给我妈打电话了说我们班有一个密切和患者接触过的人，于是我妈让我从家出发去班里通知————开（放）始（假）网（回）课（家）。正如我所说的，租的房子距离学校很近，所以我五分钟就到了给他们宣布了这好消息。但是我依旧等了很长时间————当时不只我一个人走读，还有同学正在回来取书的路上。\n">
+<meta property='og:url' content='https://Galileo927.github.io/p/cpp-pointer-intro/'>
+<meta property='og:site_name' content='Galileo Y'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;' /><meta property='article:tag' content='指针' /><meta property='article:tag' content='内存' /><meta property='article:tag' content='学习记录' /><meta property='article:published_time' content='2026-05-17T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2026-05-17T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="她没给我联系方式，但变量给了我地址：C++ 指针入门">
+<meta name="twitter:description" content=" 本文是 C++ 学习记录系列 的第二篇。\n上一篇：女神拒绝我后，C++ 成了我的命中劫\n这个事情还得从疫情期间说起，当时我正上高二，因为在学校旁边租了房子所以不怎么去上晚自习。母上大人作为家委会成员和班主任的关系还很不错（这个家委会的职位纯粹是想和老师打好关系在学校监视我才做的）。有一天晚上班主任给我妈打电话了说我们班有一个密切和患者接触过的人，于是我妈让我从家出发去班里通知————开（放）始（假）网（回）课（家）。正如我所说的，租的房子距离学校很近，所以我五分钟就到了给他们宣布了这好消息。但是我依旧等了很长时间————当时不只我一个人走读，还有同学正在回来取书的路上。\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_c5ecd16ba564b335.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😆</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Galileo Y</a></h1>
+            <h2 class="site-description">欢迎来到我的博客，我在这个网站分享一下我的学习笔记和一些生活琐事。</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='mailto:galileoyao@gmail.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="512px" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="_x31_12-gmail_x2C__email_x2C__mail"><g><g><g><rect height="358.87" style="fill:#F1F5F7;" width="357.904" x="77.045" y="76.565"/><path d="M256.002,293.738l178.947,141.697v-279.74L256.002,293.738z M256.002,293.738" style="fill:#DCE6EA;"/><path d="M449.861,76.565h-14.912L256.002,218.26L77.045,76.565H62.134      c-24.693,0-44.737,20.094-44.737,44.858v269.152c0,24.759,20.044,44.859,44.737,44.859h14.911v-279.74l178.957,138.014      l178.947-138.047v279.773h14.912c24.699,0,44.742-20.101,44.742-44.859V121.424C494.604,96.66,474.561,76.565,449.861,76.565      L449.861,76.565z M449.861,76.565" style="fill:#F84437;"/></g></g></g></g><g id="Layer_1"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Galileo927'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-先从变量开始">1. 先从变量开始</a></li>
+    <li><a href="#2-指针到底是什么">2. 指针到底是什么</a></li>
+    <li><a href="#3-通过指针修改变量">3. 通过指针修改变量</a></li>
+    <li><a href="#4-指针自己也有地址">4. 指针自己也有地址</a></li>
+    <li><a href="#5-指针类型为什么重要">5. 指针类型为什么重要</a></li>
+    <li><a href="#6-空指针-nullptr">6. 空指针 nullptr</a></li>
+    <li><a href="#7-指针作为函数参数">7. 指针作为函数参数</a></li>
+    <li><a href="#8-几个我踩过的坑">8. 几个我踩过的坑</a>
+      <ol>
+        <li><a href="#81-未初始化指针">8.1 未初始化指针</a></li>
+        <li><a href="#82-空指针解引用">8.2 空指针解引用</a></li>
+        <li><a href="#83-悬空指针">8.3 悬空指针</a></li>
+      </ol>
+    </li>
+    <li><a href="#9-总结">9. 总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/c&#43;&#43;%E7%B3%BB%E5%88%97/" style="background-color: #7c3aed; color: #fff;">
+                C&#43;&#43;系列
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/cpp-pointer-intro/">她没给我联系方式，但变量给了我地址：C&#43;&#43; 指针入门</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2026-05-17</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>本文是 <a class="link" href="/p/cpp-series/" >C++ 学习记录系列</a> 的第二篇。</p>
+<p>上一篇：<a class="link" href="/p/cpp-series-preface/" >女神拒绝我后，C++ 成了我的命中劫</a></p>
+</blockquote>
+<p>这个事情还得从疫情期间说起，当时我正上高二，因为在学校旁边租了房子所以不怎么去上晚自习。母上大人作为家委会成员和班主任的关系还很不错（这个家委会的职位纯粹是想和老师打好关系在学校监视我才做的）。有一天晚上班主任给我妈打电话了说我们班有一个密切和患者接触过的人，于是我妈让我从家出发去班里通知————开（放）始（假）网（回）课（家）。正如我所说的，租的房子距离学校很近，所以我五分钟就到了给他们宣布了这好消息。但是我依旧等了很长时间————当时不只我一个人走读，还有同学正在回来取书的路上。</p>
+<p>我当时就在教室里等待着我的同桌————看过前言的朋友应该都知道这是我对我同桌是什么意思了————总而言之，等到她来了以后，我就做了青春期小男生都会做的事情，我开始尽可能找话题聊天。</p>
+<p>走运的是我确实要到了她的联系方式，但是我真不知道人家的地址————友情提醒，在任何情况下贸然了解非熟人的地址都是一件涉及隐私的行为，慎行。但是请不要看到这就说我 Galileo 标题党，恰恰相反，虽然有了联系方式，但是我在最后还不如没有呢！想知道后面发生了什么，请你耐心地读到到后面的 C++ 系列吧。:）</p>
+<p>不过回到 C++，情况就简单多了。</p>
+<p>现实里不能随便问人家的地址，但程序里的变量很大方：只要你写一个 <code>&amp;</code>，它就会把自己的内存地址交出来。</p>
+<p>这篇文章要讲的指针，本质上就是在回答一个问题：<strong>如果我知道了一个变量的地址，我到底能做什么？</strong></p>
+<h2 id="1-先从变量开始">1. 先从变量开始
+</h2><p>在理解指针之前，先要理解一个普通变量在程序里至少包含几层信息：</p>
+<ol>
+<li>变量名：代码里用来访问它的名字</li>
+<li>变量类型：决定这块数据应该如何解释</li>
+<li>变量值：变量当前保存的数据</li>
+<li>变量地址：变量在内存中的位置</li>
+</ol>
+<p>比如下面这段代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a  = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&amp;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>一次可能的运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a  = 10
+</span></span><span class="line"><span class="cl">&amp;a = 0x16b7fad4c
+</span></span></code></pre></div><p>这里的 <code>a</code> 表示变量的值，也就是 <code>10</code>。</p>
+<p>而 <code>&amp;a</code> 表示变量 <code>a</code> 的地址，也就是它在内存中的位置。</p>
+<p>需要注意的是，地址每次运行都可能不一样。我们不需要记住某个具体地址，只需要理解：<strong>变量除了有值之外，也有自己的内存地址</strong>。</p>
+<p>如果继续用前面的故事类比，变量名有点像“我在代码里怎么称呼它”，变量值是它当前保存的内容，而变量地址才是它在内存里的具体位置。</p>
+<p>联系方式和地址不是一回事，变量名和变量地址也不是一回事。</p>
+<h2 id="2-指针到底是什么">2. 指针到底是什么
+</h2><p>指针本质上也是一个变量。</p>
+<p>只不过普通变量保存的是普通数据，而指针变量保存的是地址。</p>
+<p>也就是说，指针不是变量本身，而是一个“记着变量地址的小纸条”。</p>
+<p>（啊这让我想到了我的好homie，当时他也在追一个姑娘，可以说死缠烂打，终于又一次在晚自习时写在纸条上的表白被答应了，但是刚答应，纸条就被班主任收走看见了，从严格意义上来讲，班主任是第一个知道女生小心思的人，纸条返回的地址输出给班主任了，他没看到）</p>
+<p>纸条上写着地址，你顺着地址才能找到真正的数据。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a  = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&amp;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;p  = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;*p = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>一次可能的运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a  = 10
+</span></span><span class="line"><span class="cl">&amp;a = 0x16d7dad4c
+</span></span><span class="line"><span class="cl">p  = 0x16d7dad4c
+</span></span><span class="line"><span class="cl">*p = 10
+</span></span></code></pre></div><p>这段代码里有三个符号特别关键：</p>
+<ol>
+<li><code>&amp;a</code>：取出变量 <code>a</code> 的地址</li>
+<li><code>p</code>：保存变量 <code>a</code> 的地址</li>
+<li><code>*p</code>：根据 <code>p</code> 里保存的地址，找到对应变量并访问它的值</li>
+</ol>
+<p>所以这行代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span></code></pre></div><p>可以理解为：</p>
+<p>创建一个 <code>int*</code> 类型的指针变量 <code>p</code>，让它保存 <code>a</code> 的地址。</p>
+<p>这里的 <code>int*</code> 表示：<code>p</code> 是一个指针，它指向的对象类型是 <code>int</code>。</p>
+<p>所以标题里说“变量给了我地址”，放到代码里就是这句：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span></code></pre></div><p><code>a</code> 把地址交出来，<code>p</code> 负责把这个地址保存好。</p>
+<h2 id="3-通过指针修改变量">3. 通过指针修改变量
+</h2><p>因为指针保存的是变量地址，所以我们可以通过指针找到原来的变量，并修改它。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a  = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;*p = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a  = 20
+</span></span><span class="line"><span class="cl">*p = 20
+</span></span></code></pre></div><p>关键点在这一句：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span></code></pre></div><p>它不是在修改指针变量 <code>p</code> 本身，而是在修改 <code>p</code> 指向的那块内存。</p>
+<p>也就是说：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span></code></pre></div><p>表示让 <code>p</code> 保存 <code>a</code> 的地址。</p>
+<p>而：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span></code></pre></div><p>表示通过 <code>p</code> 找到 <code>a</code>，然后把 <code>a</code> 改成 <code>20</code>。</p>
+<p>这里最容易误会的是：<code>p</code> 只是保存地址的变量，真正被改的是地址指向的对象。</p>
+<p>打个不太浪漫但是很准确的比方：你改的不是纸条上的地址，而是按地址找到房间以后，改了房间里的东西。</p>
+<h2 id="4-指针自己也有地址">4. 指针自己也有地址
+</h2><p>指针是变量，所以指针自己也会占内存，也有自己的地址。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&amp;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;p  = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;&amp;p = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>一次可能的运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">&amp;a = 0x16b5dad4c
+</span></span><span class="line"><span class="cl">p  = 0x16b5dad4c
+</span></span><span class="line"><span class="cl">&amp;p = 0x16b5dad40
+</span></span></code></pre></div><p>这里很容易混：</p>
+<ol>
+<li><code>p</code> 是指针变量的值，它保存的是 <code>a</code> 的地址</li>
+<li><code>&amp;p</code> 是指针变量 <code>p</code> 自己的地址</li>
+</ol>
+<p>所以可以把它拆成两层看：</p>
+<p><code>p</code> 这个变量自己住在一个地址里，而它里面保存的值又是另一个变量的地址。</p>
+<p>换成刚才的小纸条类比就是：纸条上写着 <code>a</code> 的地址，但纸条本身也得放在某个地方。</p>
+<p><code>p</code> 是纸条上写的内容，<code>&amp;p</code> 是这张纸条自己的位置。</p>
+<p>这可不要弄混，不然就会像我的学长一样，本来是想加<code>p</code>学姐和人家认识认识聊聊人生，但是加成了<code>&amp;p</code>学姐，这下好了，他用了一个月发现了error，但是你的报错可是会瞬间给你一巴掌。</p>
+<h2 id="5-指针类型为什么重要">5. 指针类型为什么重要
+</h2><p>指针保存的是地址，但 C++ 里的指针不只是一个地址。</p>
+<p>它还带着类型信息。</p>
+<p>比如 <code>int*</code> 表示这个指针指向的是 <code>int</code>，<code>double*</code> 表示这个指针指向的是 <code>double</code>。</p>
+<p>类型至少影响两件事：</p>
+<ol>
+<li>解引用时，编译器应该按什么类型读取数据</li>
+<li>指针做加法时，地址应该移动多少字节</li>
+</ol>
+<p>看下面这个例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="n">arr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;p       = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;p + 1   = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;*p      = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;*(p+1)  = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;sizeof(int) = &#34;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>一次可能的运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">p       = 0x16f9dad40
+</span></span><span class="line"><span class="cl">p + 1   = 0x16f9dad44
+</span></span><span class="line"><span class="cl">*p      = 10
+</span></span><span class="line"><span class="cl">*(p+1)  = 20
+</span></span><span class="line"><span class="cl">sizeof(int) = 4
+</span></span></code></pre></div><p>如果 <code>int</code> 占 4 个字节，那么 <code>p + 1</code> 不是让地址加 1，而是让地址向后移动 1 个 <code>int</code> 的大小，也就是 4 个字节。</p>
+<p>所以指针加法不是简单的数字加法，而是和指针指向的类型有关。</p>
+<p>这就像只知道“地址”还不够，你还得知道那里住的到底是什么类型的对象。</p>
+<p>如果 <code>p</code> 指向的是 <code>int</code>，那往后走一步就是下一个 <code>int</code>；如果指向的是 <code>double</code>，往后走一步就要按 <code>double</code> 的大小来走。</p>
+<p>C++ 不会只问“你要去哪”，它还会问“你要按什么规格走”。</p>
+<h2 id="6-空指针-nullptr">6. 空指针 nullptr
+</h2><p>如果一个指针暂时不指向任何有效对象，应该让它等于 <code>nullptr</code>。</p>
+<p>如果暂时没有地址，就老老实实说没有地址。</p>
+<p>最怕的是明明不知道指向哪里，还装作自己知道。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;p does not point to anything now</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><blockquote>
+<p><code>nullptr</code> 表示空指针。</p>
+</blockquote>
+<p>它不是一个有效对象的地址，所以不能对空指针解引用：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 错误示范：不要这样写
+</span></span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><p>对空指针解引用会导致未定义行为，程序可能直接崩溃。</p>
+<p>这件事也很好理解：你手里没有地址，却非要按地址去找东西，那程序只能当场迷路。</p>
+<p><code>nullptr</code> 的意义不是让你去访问它，而是提醒你：这个指针现在还没有目标。</p>
+<h2 id="7-指针作为函数参数">7. 指针作为函数参数
+</h2><p>指针常见的用途之一，是把某个变量的地址传给函数，让函数可以修改外面的变量。</p>
+<p>这就开始有点像“把地址告诉别人，让别人能找到原来的东西”了。</p>
+<p>普通传值只是给别人一份复印件；传指针则是把原对象的位置告诉别人。</p>
+<p>先看普通传值：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">changeByValue</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">changeByValue</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a = 10
+</span></span></code></pre></div><p>这里 <code>changeByValue</code> 拿到的是 <code>a</code> 的一份拷贝，函数内部修改的是拷贝，不会影响外面的 <code>a</code>。</p>
+<p>再看传指针：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">changeByPointer</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">changeByPointer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a = 100
+</span></span></code></pre></div><p>这里传进去的是 <code>a</code> 的地址。</p>
+<p>函数内部通过 <code>*p = 100;</code> 找到外面的 <code>a</code>，并修改它。</p>
+<p>这也是很多 C 风格接口喜欢传指针的原因：函数可以通过地址访问调用者传进来的对象。</p>
+<p>所以传指针的威力更大，责任也更大。</p>
+<p>你把地址交出去了，函数就不只是看看，它是真的可能改到原来的对象。</p>
+<h2 id="8-几个我踩过的坑">8. 几个我踩过的坑
+</h2><h3 id="81-未初始化指针">8.1 未初始化指针
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 错误示范：p 没有被初始化，不知道指向哪里
+</span></span></span><span class="line"><span class="cl"><span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span></code></pre></div><p>未初始化的指针里可能是任意地址。</p>
+<p>直接解引用它非常危险。</p>
+<p>这就像手里拿了一张没写清楚的纸条，却硬说它是情书，上面记了人家要和你表白的地址。</p>
+<p>你顺着它走，走到哪里完全看运气，而写程序最不应该靠运气，感情也是，万一那是年级主任钓鱼用的呢。</p>
+<p>如果暂时不知道指向谁，先写成：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span></code></pre></div><p>你要是写情书的话另说，这东西不兴有模版或者定义之类的。</p>
+<h3 id="82-空指针解引用">8.2 空指针解引用
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 错误示范
+</span></span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><p><code>nullptr</code> 不指向任何有效对象，不能通过 <code>*p</code> 访问。</p>
+<p>它至少比未初始化指针诚实：未初始化指针是不知道自己去哪还乱跑，<code>nullptr</code> 是明确告诉你“我现在哪也不去”。</p>
+<h3 id="83-悬空指针">8.3 悬空指针
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 错误示范：a 的生命周期已经结束
+</span></span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><blockquote>
+<p><code>a</code> 是代码块里的局部变量。</p>
+</blockquote>
+<p>当代码块结束后，<code>a</code> 的生命周期结束，<code>p</code> 还保存着原来的地址，但那个地址对应的对象已经不存在了。</p>
+<p>这种指针叫悬空指针。</p>
+<p>这个坑很像你保存了一个旧地址，但那个人早就搬走了。</p>
+<p>地址看起来还像个地址，但你再按它去找，找到的已经不是原来的对象。</p>
+<h2 id="9-总结">9. 总结
+</h2><p>这一篇先抓住几句话就够了：</p>
+<ol>
+<li>变量有值，也有地址</li>
+<li><code>&amp;a</code> 表示取出变量 <code>a</code> 的地址</li>
+<li>指针变量保存的是地址</li>
+<li><code>*p</code> 表示根据指针保存的地址访问对象</li>
+<li>指针类型会影响解引用和指针运算</li>
+<li>不确定指向谁的指针，先初始化为 <code>nullptr</code></li>
+</ol>
+<p>类比一下就是：</p>
+<p>变量名像称呼，变量值像当前内容，变量地址像它在内存里的位置，指针像一张专门保存地址的纸条。</p>
+<p>但 C++ 比现实世界更严格：你可以拿地址，也可以顺着地址改东西，可一旦地址是假的、空的、过期的，程序就会用崩溃或者未定义行为提醒你，这事不能乱来。尤其是当女生给你了假的联系方式的时候（当然人家肯定没给我假的，不然也没后面的事了）</p>
+<p>如果把这几个点想清楚，后面再看引用、数组、动态内存、对象生命周期，都会顺很多。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+        
+            <a href="/tags/%E6%8C%87%E9%92%88/">指针</a>
+        
+            <a href="/tags/%E5%86%85%E5%AD%98/">内存</a>
+        
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/cpp-series-preface/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">女神拒绝我后，C&#43;&#43; 成了我的命中劫</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 Example Person
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
